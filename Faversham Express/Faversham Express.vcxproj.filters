@@ -51,6 +51,12 @@
     <ClInclude Include="models\Carriage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="models\Tower.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\loadBMP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -75,6 +81,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="models\Carriage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\Tower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -3,8 +3,10 @@
 #include "../models/SceneObject.h"
 #include "../models/TrainTracks.h"
 #include "../models/Train.h"
+#include "../models/Tower.h"
 
 Stage* stage;
+Tower* tower;
 TrainTracks* trainTracks;
 Train* train1;
 
@@ -15,6 +17,8 @@ void Scene::display()
 	stage->display();
 	trainTracks->display();
 	train1->display();
+
+	tower->display();
 }
 
 Scene::Scene()
@@ -35,6 +39,7 @@ Scene::Scene()
 	gluPerspective(PERSPECTIVE_PROJECTION);
 
 	stage = new Stage();
+	tower = new Tower();
 	trainTracks = new TrainTracks();
 	train1 = new Train(4);
 }

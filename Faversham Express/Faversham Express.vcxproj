@@ -78,6 +78,8 @@
     <ClInclude Include="core\OpenGLManager.h" />
     <ClInclude Include="models\Train.h" />
     <ClInclude Include="models\TrainTracks.h" />
+    <ClInclude Include="models\Tower.h" />
+    <ClInclude Include="textures\loadBMP.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="models\Carriage.cpp" />
@@ -88,6 +90,7 @@
     <ClCompile Include="core\OpenGLManager.cpp" />
     <ClCompile Include="models\Train.cpp" />
     <ClCompile Include="models\TrainTracks.cpp" />
+    <ClCompile Include="models\Tower.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

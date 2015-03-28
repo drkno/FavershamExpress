@@ -13,7 +13,7 @@ Stage::Stage()
 	glMaterialf(GL_FRONT, GL_SHININESS, 50);
 }
 
-void Stage::display()
+void Stage::draw()
 {
 	float lgt1_pos[] = { 0.0f, 50.0f, 0.0f, 1.0f };  //light0 position (directly above the origin)
 	glLightfv(GL_LIGHT0, GL_POSITION, lgt1_pos);   //light position

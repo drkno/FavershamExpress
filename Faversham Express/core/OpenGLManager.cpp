@@ -1,8 +1,8 @@
-#include "Startup.h"
+#include "OpenGLManager.h"
 
-Scene* Startup::windowScene = NULL;
+Scene* OpenGLManager::windowScene = NULL;
 
-void Startup::run(int argc, char* argv[])
+void OpenGLManager::run(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
@@ -14,7 +14,7 @@ void Startup::run(int argc, char* argv[])
 	glutMainLoop();
 }
 
-void Startup::windowDisplayCallback()
+void OpenGLManager::windowDisplayCallback()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);

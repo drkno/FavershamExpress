@@ -9,7 +9,7 @@
 #define WINDOW_YPOS 50
 #define WINDOW_TITLE "Faversham Express"
 
-class Startup
+class OpenGLManager
 {
 public:
 	static void run(int argc, char** argv);

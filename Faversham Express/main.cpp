@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Startup.h"
+#include "core/OpenGLManager.h"
 
 #define DEBUG
 
@@ -23,6 +23,6 @@ int main(int argc, char* argv[]) {
 	
 	// Start the GUI.
 	// Note: this should never, ever, ever be called multiple times...
-	Startup::run(argc, argv);
+	OpenGLManager::run(argc, argv);
 	return 0;
 }

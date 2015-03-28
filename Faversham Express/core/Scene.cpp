@@ -1,6 +1,5 @@
 #include "Scene.h"
-#include "Train.h"
-#include "Stage.h"
+#include "../models/Stage.h"
 
 GLUquadric *q;
 Stage* stage;

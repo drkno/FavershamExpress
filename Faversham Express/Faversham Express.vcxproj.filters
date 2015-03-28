@@ -30,39 +30,39 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Train.h">
-      <Filter>Header Files\models</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage.h">
-      <Filter>Header Files\models</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="core\OpenGLManager.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
-    <ClInclude Include="Startup.h">
+    <ClInclude Include="models\SceneObject.h">
+      <Filter>Header Files\models</Filter>
+    </ClInclude>
+    <ClInclude Include="models\Train.h">
+      <Filter>Header Files\models</Filter>
+    </ClInclude>
+    <ClInclude Include="core\Scene.h">
       <Filter>Header Files\core</Filter>
     </ClInclude>
-    <ClInclude Include="SceneObject.h">
+    <ClInclude Include="models\Stage.h">
       <Filter>Header Files\models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Train.cpp">
-      <Filter>Source Files\models</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage.cpp">
-      <Filter>Source Files\models</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
+    <ClCompile Include="core\OpenGLManager.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
-    <ClCompile Include="Startup.cpp">
+    <ClCompile Include="models\SceneObject.cpp">
+      <Filter>Source Files\models</Filter>
+    </ClCompile>
+    <ClCompile Include="models\Train.cpp">
+      <Filter>Source Files\models</Filter>
+    </ClCompile>
+    <ClCompile Include="core\Scene.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
-    <ClCompile Include="SceneObject.cpp">
+    <ClCompile Include="models\Stage.cpp">
       <Filter>Source Files\models</Filter>
     </ClCompile>
   </ItemGroup>

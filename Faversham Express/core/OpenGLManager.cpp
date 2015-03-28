@@ -11,6 +11,7 @@ void OpenGLManager::run(int argc, char* argv[])
 	glutCreateWindow(WINDOW_TITLE);
 	windowScene = new Scene();
 	glutDisplayFunc(windowDisplayCallback);
+	glutTimerFunc(CALLBACK_RATE, displayRefreshCallback, 0);
 	glutMainLoop();
 }
 
@@ -21,4 +22,10 @@ void OpenGLManager::windowDisplayCallback()
 	glLoadIdentity();
 	windowScene->display();
 	glutSwapBuffers();
+}
+
+void OpenGLManager::displayRefreshCallback(int value)
+{
+	glutPostRedisplay();
+	glutTimerFunc(CALLBACK_RATE, displayRefreshCallback, ++value);
 }

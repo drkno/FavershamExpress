@@ -71,19 +71,23 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="models\Carriage.h" />
     <ClInclude Include="core\Scene.h" />
     <ClInclude Include="models\SceneObject.h" />
     <ClInclude Include="models\Stage.h" />
     <ClInclude Include="core\OpenGLManager.h" />
     <ClInclude Include="models\Train.h" />
+    <ClInclude Include="models\TrainTracks.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="models\Carriage.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="core\Scene.cpp" />
     <ClCompile Include="models\SceneObject.cpp" />
     <ClCompile Include="models\Stage.cpp" />
     <ClCompile Include="core\OpenGLManager.cpp" />
     <ClCompile Include="models\Train.cpp" />
+    <ClCompile Include="models\TrainTracks.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

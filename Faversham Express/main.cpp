@@ -5,10 +5,12 @@
 
 #ifdef DEBUG
 #include <iostream>
-using namespace std;
 #if defined _WIN32
 #define sleep(x) Sleep(1000*x)
+#else
+#include <unistd.h>
 #endif
+using namespace std;
 #endif
 
 // Main entry point for the application

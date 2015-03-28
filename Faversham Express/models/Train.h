@@ -1,18 +1,26 @@
 #pragma once
 
-#include <GL/freeglut.h>
+#include <vector>
+#include "SceneObject.h"
+#include "Carriage.h"
 
-class Train
+using namespace std;
+
+#define ANGLE_STEP_SIZE 0.5
+#define ANGLE_RATIO 0.0174532925
+
+class Train : public SceneObject
 {
 public:
-	Train();
-	void display();
+	Train(int carriages);
 
 private:
-	GLUquadric *q;
+	vector<Carriage> carriages;
+	float angle = 0.0;
 
 	void base();
 	void engine();
 	void wagon();
+	virtual void draw();
 };
 

@@ -1,19 +1,25 @@
 #include "Scene.h"
 #include "../models/Stage.h"
+#include "../models/SceneObject.h"
+#include "../models/TrainTracks.h"
+#include "../models/Train.h"
 
-GLUquadric *q;
 Stage* stage;
+TrainTracks* trainTracks;
+Train* train1;
 
 void Scene::display()
 {
 	gluLookAt(-80, 50, 180, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
 	stage->display();
+	trainTracks->display();
+	train1->display();
 }
 
 Scene::Scene()
 {
-	q = gluNewQuadric();
+	SceneObject::setQuad(gluNewQuadric());
 	glEnable(GL_LIGHTING);
 
 	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
@@ -21,7 +27,7 @@ Scene::Scene()
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_NORMALIZE);
-	gluQuadricDrawStyle(q, GLU_FILL);
+	gluQuadricDrawStyle(SceneObject::getQuad(), GLU_FILL);
 	glClearColor(BACKGROUND_COLOUR);
 
 	glMatrixMode(GL_PROJECTION);
@@ -29,4 +35,6 @@ Scene::Scene()
 	gluPerspective(PERSPECTIVE_PROJECTION);
 
 	stage = new Stage();
+	trainTracks = new TrainTracks();
+	train1 = new Train(4);
 }

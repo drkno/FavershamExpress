@@ -10,7 +10,6 @@ public:
 	void display();
 
 private:
-	void floor();
 	void initialize();
 };
 

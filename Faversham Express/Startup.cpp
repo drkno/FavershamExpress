@@ -16,5 +16,9 @@ void Startup::run(int argc, char* argv[])
 
 void Startup::windowDisplayCallback()
 {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 	windowScene->display();
+	glutSwapBuffers();
 }

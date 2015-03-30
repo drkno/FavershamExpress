@@ -126,6 +126,14 @@ void Train::draw()
 	}
 }
 
+void Train::drawCamera()
+{
+	glRotatef(70, 0, 1, 0);
+	glTranslatef(0.0, -25.0, -trackDefinition->getMaxRadius() + 5);
+	glRotatef(angle + 45, 0, 1, 0);
+	gluLookAt(0, 0, 0, 0, 0, 1, 0, 1, 0);
+}
+
 Train::Train(int carriagesCount, TrackDefinition* trackdef, bool reverseDirection)
 {
 	this->reverseDirection = reverseDirection;

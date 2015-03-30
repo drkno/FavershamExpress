@@ -1,14 +1,15 @@
 #include "Scene.h"
 #include "../models/Stage.h"
-#include "../models/SceneObject.h"
 #include "../models/track/TrainTracks.h"
 #include "../models/Train.h"
 #include "../models/Tower.h"
 #include "../models/TrainStation.h"
 #include "../models/track/OuterTrack.h"
 #include "../models/track/InnerTrack.h"
+#include "../models/Skybox.h"
 
 Stage* stage;
+Skybox* skybox;
 Tower* tower;
 
 // Train 1 + Tracks 1
@@ -25,9 +26,10 @@ TrainStation* trainStation;
 
 void Scene::display()
 {
-	gluLookAt(-80, 50, 180, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	drawCamera();
 
 	stage->display();
+	skybox->display();
 	
 	trainStation->display();
 
@@ -38,6 +40,8 @@ void Scene::display()
 	train2->display();
 
 	tower->display();
+
+	
 }
 
 Scene::Scene()
@@ -58,6 +62,7 @@ Scene::Scene()
 	gluPerspective(PERSPECTIVE_PROJECTION);
 
 	stage = new Stage();
+	skybox = new Skybox();
 	tower = new Tower();
 
 	trackDefinition1 = new OuterTrack();
@@ -69,11 +74,42 @@ Scene::Scene()
 	trainTracks2 = new TrainTracks(trackDefinition2);
 
 	trainStation = new TrainStation();
+
+	changeCamera();
+}
+
+void Scene::special(int key, int x, int y)
+{
+	switch (key)
+	{
+	case -1:
+	case GLUT_KEY_LEFT: {cameraIndex++; break; }
+	case GLUT_KEY_RIGHT: {cameraIndex--; break; }
+	}
+	changeCamera();
+}
+
+void Scene::changeCamera()
+{
+	if (cameraIndex >= 3) cameraIndex = 0;
+	if (cameraIndex < 0) cameraIndex = 2;
+	switch (cameraIndex)
+	{
+	case 0: cameraObject = stage; break;
+	case 1: cameraObject = train1; break;
+	case 2: cameraObject = train2; break;
+	}
+}
+
+void Scene::drawCamera()
+{
+	cameraObject->drawCamera();
 }
 
 Scene::~Scene()
 {
 	delete stage;
+	delete skybox;
 	delete trainStation;
 	delete tower;
 	delete train1;

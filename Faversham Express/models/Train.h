@@ -25,6 +25,7 @@ private:
 	void engine();
 	void wagon();
 	void draw();
+	void drawCamera();
 	float getCarrigeSeparationAngle(float);
 	float getCarrigeSubtractionAngle(float, float, float);
 };

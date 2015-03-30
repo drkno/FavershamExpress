@@ -69,6 +69,12 @@
     <ClInclude Include="models\track\InnerTrack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="models\Skybox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\loadTGA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -110,6 +116,12 @@
     <ClCompile Include="models\track\InnerTrack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="models\Skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\loadTGA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\TowerTexture.bmp">
@@ -118,5 +130,12 @@
     <Image Include="textures\GrassTexture.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="textures\back.tga" />
+    <Image Include="textures\down.tga" />
+    <Image Include="textures\front.tga" />
+    <Image Include="textures\GrassTexture.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\left.tga" />
   </ItemGroup>
 </Project>

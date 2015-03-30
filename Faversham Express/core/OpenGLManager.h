@@ -19,7 +19,9 @@ public:
 private:
 	static Scene* windowScene;
 	static void windowDisplayCallback();
-	static void displayRefreshCallback(int value);
-	static void windowReshapeCallback(GLint newWidth, GLint newHeight);
+	static void displayRefreshCallback(int);
+	static void windowReshapeCallback(GLint, GLint);
+	static void specialKeypressCallback(int, int, int);
+	static void mouseClickCallback(int, int, int, int);
 };
 

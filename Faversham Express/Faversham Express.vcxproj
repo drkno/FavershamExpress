@@ -81,9 +81,11 @@
     <ClInclude Include="models\track\TrainTracks.h" />
     <ClInclude Include="models\Tower.h" />
     <ClInclude Include="models\track\OuterTrack.h" />
+    <ClInclude Include="models\Skybox.h" />
     <ClInclude Include="textures\loadBMP.h" />
     <ClInclude Include="models\TrainStation.h" />
     <ClInclude Include="models\track\TrackDefinition.h" />
+    <ClInclude Include="textures\loadTGA.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="models\track\InnerTrack.cpp" />
@@ -98,10 +100,17 @@
     <ClCompile Include="models\Tower.cpp" />
     <ClCompile Include="models\TrainStation.cpp" />
     <ClCompile Include="models\track\OuterTrack.cpp" />
+    <ClCompile Include="models\Skybox.cpp" />
     <ClCompile Include="textures\loadBMP.cpp" />
+    <ClCompile Include="textures\loadTGA.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="textures\back.tga" />
+    <Image Include="textures\down.tga" />
+    <Image Include="textures\front.tga" />
     <Image Include="textures\GrassTexture.bmp" />
+    <Image Include="textures\GrassTexture.png" />
+    <Image Include="textures\left.tga" />
     <Image Include="textures\TowerTexture.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

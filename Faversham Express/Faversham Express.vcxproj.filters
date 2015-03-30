@@ -137,5 +137,13 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="textures\left.tga" />
+    <Image Include="textures\rails.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\top.tga" />
+    <Image Include="textures\right.tga" />
+    <Image Include="textures\rails.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

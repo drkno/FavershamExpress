@@ -111,6 +111,10 @@
     <Image Include="textures\GrassTexture.bmp" />
     <Image Include="textures\GrassTexture.png" />
     <Image Include="textures\left.tga" />
+    <Image Include="textures\rails.bmp" />
+    <Image Include="textures\rails.jpg" />
+    <Image Include="textures\right.tga" />
+    <Image Include="textures\top.tga" />
     <Image Include="textures\TowerTexture.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

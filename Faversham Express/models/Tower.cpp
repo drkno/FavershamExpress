@@ -1,16 +1,4 @@
 #include "Tower.h"
-#include "../textures/loadBMP.h"
-
-//--------Loads a bitmap texture------------------------------------------
-void Tower::loadTexture()
-{
-	glGenTextures(1, &txId); 				// Create a Texture object
-	glBindTexture(GL_TEXTURE_2D, txId);		//Use this texture
-	loadBMP("./textures/TowerTexture.bmp");
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	//Set texture parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-}
 
 //-----Computes surface normal vector-------------------------------
 void Tower::normal(float x1, float y1, float z1,
@@ -26,7 +14,7 @@ void Tower::normal(float x1, float y1, float z1,
 
 Tower::Tower()
 {
-	loadTexture();
+	txId = loadTexture("./textures/TowerTexture.bmp");
 }
 
 void Tower::draw()

@@ -3,6 +3,7 @@
 #include <vector>
 #include "SceneObject.h"
 #include "Carriage.h"
+#include "track/TrackDefinition.h"
 
 using namespace std;
 
@@ -12,15 +13,19 @@ using namespace std;
 class Train : public SceneObject
 {
 public:
-	Train(int carriages);
+	Train(int, TrackDefinition*, bool reverseDirection = false);
 
 private:
+	TrackDefinition* trackDefinition;
 	vector<Carriage> carriages;
 	float angle = 0.0;
+	bool reverseDirection;
 
 	void base();
 	void engine();
 	void wagon();
-	virtual void draw();
+	void draw();
+	float getCarrigeSeparationAngle(float);
+	float getCarrigeSubtractionAngle(float, float, float);
 };
 

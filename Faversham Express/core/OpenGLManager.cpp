@@ -12,7 +12,9 @@ void OpenGLManager::run(int argc, char* argv[])
 	windowScene = new Scene();
 	glutDisplayFunc(windowDisplayCallback);
 	glutTimerFunc(CALLBACK_RATE, displayRefreshCallback, 0);
+	glutReshapeFunc(windowReshapeCallback);
 	glutMainLoop();
+	windowScene->~Scene();
 }
 
 void OpenGLManager::windowDisplayCallback()
@@ -28,4 +30,9 @@ void OpenGLManager::displayRefreshCallback(int value)
 {
 	glutPostRedisplay();
 	glutTimerFunc(CALLBACK_RATE, displayRefreshCallback, ++value);
+}
+
+void OpenGLManager::windowReshapeCallback(GLint newWidth, GLint newHeight)
+{
+	glViewport(0, 0, newWidth, newHeight);
 }

@@ -11,6 +11,7 @@ public:
 	Stage();
 
 private:
+	GLuint txId;			//Texture id
 	void floor();
 	void draw();
 };

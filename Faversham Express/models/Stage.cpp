@@ -1,7 +1,10 @@
 #include "Stage.h"
 
+
 Stage::Stage()
 {
+	txId = loadTexture("./textures/GrassTexture.bmp", GL_DIFFUSE);
+
 	float grey[4] = { 0.2, 0.2, 0.2, 1.0 };
 	float white[4] = { 1.0, 1.0, 1.0, 1.0 };
 	glEnable(GL_LIGHT0);
@@ -15,14 +18,20 @@ Stage::Stage()
 
 void Stage::draw()
 {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, txId);
+
 	float lgt1_pos[] = { 0.0f, 50.0f, 0.0f, 1.0f };  //light0 position (directly above the origin)
 	glLightfv(GL_LIGHT0, GL_POSITION, lgt1_pos);   //light position
 	floor();
+
+	glDisable(GL_TEXTURE_2D);
 }
 
 //-- Ground Plane --------------------------------------------------------
 void Stage::floor()
 {
+	const float textureScale = 0.03;
 	float white[4] = { 1., 1., 1., 1. };
 	float black[4] = { 0 };
 	glColor4f(0.7, 0.7, 0.7, 1.0);
@@ -31,13 +40,20 @@ void Stage::floor()
 
 	//The floor is made up of several tiny squares on a 200x200 grid. Each square has a unit size.
 	glBegin(GL_QUADS);
+	
 	for (int i = -200; i < 200; i++)
 	{
+		float x = (i + 200) * textureScale;
 		for (int j = -200; j < 200; j++)
 		{
+			float z = (j + 200) * textureScale;
+			glTexCoord2f(x, z);
 			glVertex3f(i, 0.0, j);
+			glTexCoord2f(x, z + textureScale);
 			glVertex3f(i, 0.0, j + 1);
+			glTexCoord2f(x + textureScale, z + textureScale);
 			glVertex3f(i + 1, 0.0, j + 1);
+			glTexCoord2f(x + textureScale, z);
 			glVertex3f(i + 1, 0.0, j);
 		}
 	}

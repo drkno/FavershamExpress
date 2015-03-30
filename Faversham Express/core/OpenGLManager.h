@@ -20,5 +20,6 @@ private:
 	static Scene* windowScene;
 	static void windowDisplayCallback();
 	static void displayRefreshCallback(int value);
+	static void windowReshapeCallback(GLint newWidth, GLint newHeight);
 };
 

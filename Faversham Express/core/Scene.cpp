@@ -1,22 +1,41 @@
 #include "Scene.h"
 #include "../models/Stage.h"
 #include "../models/SceneObject.h"
-#include "../models/TrainTracks.h"
+#include "../models/track/TrainTracks.h"
 #include "../models/Train.h"
 #include "../models/Tower.h"
+#include "../models/TrainStation.h"
+#include "../models/track/OuterTrack.h"
+#include "../models/track/InnerTrack.h"
 
 Stage* stage;
 Tower* tower;
-TrainTracks* trainTracks;
+
+// Train 1 + Tracks 1
 Train* train1;
+TrainTracks* trainTracks1;
+TrackDefinition* trackDefinition1;
+
+// Train 2 + Tracks 2
+Train* train2;
+TrainTracks* trainTracks2;
+TrackDefinition* trackDefinition2;
+
+TrainStation* trainStation;
 
 void Scene::display()
 {
 	gluLookAt(-80, 50, 180, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
 	stage->display();
-	trainTracks->display();
+	
+	trainStation->display();
+
+	trainTracks1->display();
 	train1->display();
+
+	trainTracks2->display();
+	train2->display();
 
 	tower->display();
 }
@@ -40,6 +59,27 @@ Scene::Scene()
 
 	stage = new Stage();
 	tower = new Tower();
-	trainTracks = new TrainTracks();
-	train1 = new Train(4);
+
+	trackDefinition1 = new OuterTrack();
+	train1 = new Train(4, trackDefinition1);
+	trainTracks1 = new TrainTracks(trackDefinition1);
+
+	trackDefinition2 = new InnerTrack();
+	train2 = new Train(6, trackDefinition2, true);
+	trainTracks2 = new TrainTracks(trackDefinition2);
+
+	trainStation = new TrainStation();
+}
+
+Scene::~Scene()
+{
+	delete stage;
+	delete trainStation;
+	delete tower;
+	delete train1;
+	delete trainTracks1;
+	delete trackDefinition1;
+	delete train2;
+	delete trainTracks2;
+	delete trackDefinition2;
 }

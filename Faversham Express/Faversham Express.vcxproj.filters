@@ -45,9 +45,6 @@
     <ClInclude Include="models\Stage.h">
       <Filter>Header Files\models</Filter>
     </ClInclude>
-    <ClInclude Include="models\TrainTracks.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="models\Carriage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -55,6 +52,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="textures\loadBMP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\TrainStation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\track\TrainTracks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\track\TrackDefinition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\track\OuterTrack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="models\track\InnerTrack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -77,14 +89,34 @@
     <ClCompile Include="models\Stage.cpp">
       <Filter>Source Files\models</Filter>
     </ClCompile>
-    <ClCompile Include="models\TrainTracks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="models\Carriage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="models\Tower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="models\TrainStation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\loadBMP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\track\TrainTracks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\track\OuterTrack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\track\InnerTrack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\TowerTexture.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\GrassTexture.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

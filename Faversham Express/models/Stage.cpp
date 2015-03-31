@@ -52,10 +52,10 @@ void Stage::drawCamera()
 		gluLookAt(x, 50, z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 		break;
 	}
-	case 0: gluLookAt(-139, 50, -139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
-	case 1: gluLookAt(139, 50, -139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
-	case 2: gluLookAt(139, 50, 139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
-	case 3: gluLookAt(-139, 50, 139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
+	case 2: gluLookAt(-139, 50, 139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
+	case 3: gluLookAt(-139, 50, -139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
+	case 0: gluLookAt(139, 50, -139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
+	case 1: gluLookAt(139, 50, 139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
 	}
 	
 }

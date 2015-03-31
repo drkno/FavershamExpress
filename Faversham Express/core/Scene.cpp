@@ -8,6 +8,7 @@
 #include "../models/track/InnerTrack.h"
 #include "../models/Skybox.h"
 #include "../models/RailwaySignal.h"
+#include "../models/Barrier.h"
 
 Stage* stage;
 Skybox* skybox;
@@ -23,11 +24,20 @@ RailwaySignal* railwaySignal1;
 Train* train2;
 TrainTracks* trainTracks2;
 TrackDefinition* trackDefinition2;
+Barrier* railwayBarrier;
 
 TrainStation* trainStation;
 
 void Scene::display()
 {
+	static int toggleBarrierIterator = 0;
+	if (toggleBarrierIterator == 100)
+	{
+		railwayBarrier->toggleBarrier();
+		toggleBarrierIterator = -1;
+	}
+	toggleBarrierIterator++;
+
 	drawCamera();
 
 	stage->display();
@@ -41,9 +51,10 @@ void Scene::display()
 	trainTracks2->display();
 	train2->display();
 
-	tower->display();
+	//tower->display();
 
 	railwaySignal1->display();
+	railwayBarrier->display();
 }
 
 Scene::Scene()
@@ -75,9 +86,12 @@ Scene::Scene()
 	trackDefinition2 = new InnerTrack();
 	train2 = new Train(6, trackDefinition2, true);
 	trainTracks2 = new TrainTracks(trackDefinition2);
+	railwayBarrier = new Barrier(0, 30, -135);
+	railwayBarrier->toggleBarrier();
 
 	trainStation = new TrainStation();
 
+	cameraIndex = 0;
 	changeCamera();
 }
 

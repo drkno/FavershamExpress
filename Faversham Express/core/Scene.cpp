@@ -51,10 +51,12 @@ void Scene::display()
 	trainTracks2->display();
 	train2->display();
 
-	//tower->display();
+	tower->display();
 
 	railwaySignal1->display();
 	railwayBarrier->display();
+
+	glFlush();
 }
 
 Scene::Scene()
@@ -79,19 +81,19 @@ Scene::Scene()
 	tower = new Tower();
 
 	trackDefinition1 = new OuterTrack();
-	train1 = new Train(4, trackDefinition1);
+	train1 = new Train(4, trackDefinition1, GL_LIGHT1);
 	trainTracks1 = new TrainTracks(trackDefinition1);
 	railwaySignal1 = new RailwaySignal(-135, 0, -30);
 
 	trackDefinition2 = new InnerTrack();
-	train2 = new Train(6, trackDefinition2, true);
+	train2 = new Train(6, trackDefinition2, GL_LIGHT2, true);
 	trainTracks2 = new TrainTracks(trackDefinition2);
 	railwayBarrier = new Barrier(0, 30, -135);
 	railwayBarrier->toggleBarrier();
 
 	trainStation = new TrainStation();
 
-	cameraIndex = 0;
+	cameraIndex = 3;
 	changeCamera();
 }
 

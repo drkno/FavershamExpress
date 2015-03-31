@@ -6,6 +6,7 @@ const float* TrainStation::points = station_points;
 TrainStation::TrainStation()
 {
 	txId = loadTexture("./textures/station.bmp");
+	humanoid = new Humanoid();
 }
 
 void TrainStation::end(float depth, float nz)
@@ -78,12 +79,28 @@ void TrainStation::body(float depth)
 	glDisable(GL_TEXTURE_2D);
 }
 
-void TrainStation::draw()
+void TrainStation::walkHuman()
 {
+	const float CDR = 3.14159265 / 180.0;		//Degrees to radians conversion factor
+
+	angle++;
+	if (angle >= 360) angle = 0;
+	float x = (-5) * cos(angle * CDR);
+	float z = 30 * sin(angle * CDR);
+
+	glPushMatrix();
+	glTranslatef(x + 6, 4, z + 32);
+	glRotatef(angle, 0, 1, 0);
+	humanoid->display();
+	glPopMatrix();
+}
+
+void TrainStation::draw()
+{	
+	glTranslatef(130, 0, -32);
+	walkHuman();
 	glColor3f(0.36, 0.35, 0.33);
-	glTranslatef(130, 0, 0);
-	glTranslatef(0, 0, -32);
 	end(0, -1);
-	end(64, 1);
-	body(64);
+	end(depth, 1);
+	body(depth);
 }

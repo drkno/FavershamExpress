@@ -13,13 +13,14 @@ using namespace std;
 class Train : public SceneObject
 {
 public:
-	Train(int, TrackDefinition*, bool reverseDirection = false);
+	Train(int, TrackDefinition*, GLenum light, bool reverseDirection = false);
 
 private:
 	TrackDefinition* trackDefinition;
 	vector<Carriage> carriages;
 	float angle = 0.0;
 	bool reverseDirection;
+	GLenum light;
 
 	void base();
 	void engine();

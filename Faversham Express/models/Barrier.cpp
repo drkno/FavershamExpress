@@ -124,7 +124,6 @@ void Barrier::drawLight(bool on)
 
 void Barrier::toggleBarrier()
 {
-	std::cout << "reached" << std::endl;
 	switch (loweredState)
 	{
 	case 0: loweredState = 1; break;	// up
@@ -132,5 +131,4 @@ void Barrier::toggleBarrier()
 	case 2: loweredState = 3; break;	// down
 	case 3: loweredState = 1; break;	// lifting
 	}
-	std::cout << "reached" << std::endl;
 }

@@ -90,14 +90,13 @@ void Train::draw()
 	if (angle >= 360.0 && !reverseDirection) angle = 0.0;
 	else if (angle <= 0.0 && reverseDirection) angle = 360.0;
 
-	float lgt2_pos[] = { -10.0f, 14.0f, -120.0f, 1.0f };
-	float spotDir[] = { -1.0, -1.0, 0.2 };
+	float lgt2_pos[] = { 0.0f, 14.0f, 0.0f, 1.0f };
+	float spotDir[] = { reverseDirection ? 1.0 : -1.0, reverseDirection ? 1.0 : -1.0, 0.0 };
 
 	glRotatef(angle, 0, 1, 0);
 
 	glPushMatrix();
-		glLightfv(GL_LIGHT1, GL_POSITION, lgt2_pos);
-		glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, spotDir);
+		
 	glPopMatrix();
 
 	glPushMatrix();
@@ -105,6 +104,10 @@ void Train::draw()
 		//glTranslatef(trackDefinition->getX(angle), 1.0, trackDefinition->getZ(angle));
 
 		glTranslatef(0.0, 1.0, -trackDefinition->getMaxRadius());
+
+		glLightfv(light, GL_POSITION, lgt2_pos);
+		glLightfv(light, GL_SPOT_DIRECTION, spotDir);
+
 		if (reverseDirection) glRotatef(180, 0, 1, 0);
 		engine();
 	glPopMatrix();
@@ -134,8 +137,9 @@ void Train::drawCamera()
 	gluLookAt(0, 0, 0, 0, 0, 1, 0, 1, 0);
 }
 
-Train::Train(int carriagesCount, TrackDefinition* trackdef, bool reverseDirection)
+Train::Train(int carriagesCount, TrackDefinition* trackdef, GLenum light, bool reverseDirection)
 {
+	this->light = light;
 	this->reverseDirection = reverseDirection;
 	trackDefinition = trackdef;
 	vector<Carriage> carriages;
@@ -147,10 +151,10 @@ Train::Train(int carriagesCount, TrackDefinition* trackdef, bool reverseDirectio
 	float grey[4] = { 0.2, 0.2, 0.2, 1.0 };
 	float white[4] = { 1.0, 1.0, 1.0, 1.0 };
 
-	glEnable(GL_LIGHT1);
-	glLightfv(GL_LIGHT1, GL_AMBIENT, grey);
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, white);
-	glLightfv(GL_LIGHT1, GL_SPECULAR, white);
-	glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 30.0);
-	glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 0.01);
+	glEnable(light);
+	glLightfv(light, GL_AMBIENT, grey);
+	glLightfv(light, GL_DIFFUSE, white);
+	glLightfv(light, GL_SPECULAR, white);
+	glLightf(light, GL_SPOT_CUTOFF, 30.0);
+	glLightf(light, GL_SPOT_EXPONENT, 0.01);
 }

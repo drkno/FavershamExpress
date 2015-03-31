@@ -43,21 +43,20 @@ void Stage::changeCameraViewAngle(int change)
 void Stage::drawCamera()
 {
 	const float CDR = 3.14159265 / 180.0;		//Degrees to radians conversion factor
+
 	switch (cameraAngle)
 	{
 	default:
-	case -1: {
-		float x = 196.0 * cosf((float)cameraViewAngle * CDR);
-		float z = 196.0 * sinf((float)cameraViewAngle * CDR);
-		gluLookAt(x, 50, z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-		break;
+	case -1: break;
+	case 0: cameraViewAngle = 45; break;
+	case 1: cameraViewAngle = 135; break;
+	case 2: cameraViewAngle = 225; break;
+	case 3: cameraViewAngle = 315; break;
 	}
-	case 2: gluLookAt(-139, 50, 139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
-	case 3: gluLookAt(-139, 50, -139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
-	case 0: gluLookAt(139, 50, -139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
-	case 1: gluLookAt(139, 50, 139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
-	}
-	
+
+	float x = 196.0 * cosf((float)cameraViewAngle * CDR);
+	float z = 196.0 * sinf((float)cameraViewAngle * CDR);
+	gluLookAt(x, 50, z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 }
 
 //-- Ground Plane --------------------------------------------------------

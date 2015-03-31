@@ -38,6 +38,7 @@ void Tower::draw()
 	eye_z = 150.0 * cos(viewAngle*CDR);
 
 	glColor3f(0., 1., 1.);
+	glScalef(2, 2, 2);
 
 	for (int j = 0; j < 8; j++) {
 		glBegin(GL_QUAD_STRIP);

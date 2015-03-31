@@ -11,9 +11,13 @@ class Stage : public SceneObject
 {
 public:
 	Stage();
+	void setAngle(int);
+	void changeCameraViewAngle(int);
 
 private:
 	GLuint txId;			//Texture id
+	int cameraViewAngle;
+	int cameraAngle;
 	void floor();
 	void draw();
 	void drawCamera();

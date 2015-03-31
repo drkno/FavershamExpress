@@ -7,6 +7,7 @@
 #include "../models/track/OuterTrack.h"
 #include "../models/track/InnerTrack.h"
 #include "../models/Skybox.h"
+#include "../models/RailwaySignal.h"
 
 Stage* stage;
 Skybox* skybox;
@@ -16,6 +17,7 @@ Tower* tower;
 Train* train1;
 TrainTracks* trainTracks1;
 TrackDefinition* trackDefinition1;
+RailwaySignal* railwaySignal1;
 
 // Train 2 + Tracks 2
 Train* train2;
@@ -41,7 +43,7 @@ void Scene::display()
 
 	tower->display();
 
-	
+	railwaySignal1->display();
 }
 
 Scene::Scene()
@@ -68,6 +70,7 @@ Scene::Scene()
 	trackDefinition1 = new OuterTrack();
 	train1 = new Train(4, trackDefinition1);
 	trainTracks1 = new TrainTracks(trackDefinition1);
+	railwaySignal1 = new RailwaySignal(-135, 0, -30);
 
 	trackDefinition2 = new InnerTrack();
 	train2 = new Train(6, trackDefinition2, true);
@@ -83,21 +86,32 @@ void Scene::special(int key, int x, int y)
 	switch (key)
 	{
 	case -1:
-	case GLUT_KEY_LEFT: {cameraIndex++; break; }
-	case GLUT_KEY_RIGHT: {cameraIndex--; break; }
+	case GLUT_KEY_UP:	cameraIndex++; break;
+	case GLUT_KEY_DOWN:	cameraIndex--; break;
+	case GLUT_KEY_LEFT:
+	case GLUT_KEY_RIGHT:
+		{
+			cameraIndex = 0;
+			stage->changeCameraViewAngle(key == GLUT_KEY_LEFT ? -1 : 1);
+			break;
+		}
 	}
 	changeCamera();
 }
 
 void Scene::changeCamera()
 {
-	if (cameraIndex >= 3) cameraIndex = 0;
-	if (cameraIndex < 0) cameraIndex = 2;
+	if (cameraIndex >= 7) cameraIndex = 0;
+	if (cameraIndex < 0) cameraIndex = 6;
 	switch (cameraIndex)
 	{
-	case 0: cameraObject = stage; break;
-	case 1: cameraObject = train1; break;
-	case 2: cameraObject = train2; break;
+	case 0: cameraObject = stage; stage->setAngle(-1); break;
+	case 1: cameraObject = stage; stage->setAngle(0); break;
+	case 2: cameraObject = stage; stage->setAngle(1); break;
+	case 3: cameraObject = stage; stage->setAngle(2); break;
+	case 4: cameraObject = stage; stage->setAngle(3); break;
+	case 5: cameraObject = train1; break;
+	case 6: cameraObject = train2; break;
 	}
 }
 
@@ -118,4 +132,5 @@ Scene::~Scene()
 	delete train2;
 	delete trainTracks2;
 	delete trackDefinition2;
+	delete railwaySignal1;
 }

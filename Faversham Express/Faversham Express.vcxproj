@@ -82,6 +82,7 @@
     <ClInclude Include="models\Tower.h" />
     <ClInclude Include="models\track\OuterTrack.h" />
     <ClInclude Include="models\Skybox.h" />
+    <ClInclude Include="models\RailwaySignal.h" />
     <ClInclude Include="textures\loadBMP.h" />
     <ClInclude Include="models\TrainStation.h" />
     <ClInclude Include="models\track\TrackDefinition.h" />
@@ -101,21 +102,28 @@
     <ClCompile Include="models\TrainStation.cpp" />
     <ClCompile Include="models\track\OuterTrack.cpp" />
     <ClCompile Include="models\Skybox.cpp" />
+    <ClCompile Include="models\RailwaySignal.cpp" />
     <ClCompile Include="textures\loadBMP.cpp" />
     <ClCompile Include="textures\loadTGA.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\back.tga" />
+    <Image Include="textures\concrete.jpg" />
     <Image Include="textures\down.tga" />
     <Image Include="textures\front.tga" />
     <Image Include="textures\GrassTexture.bmp" />
     <Image Include="textures\GrassTexture.png" />
     <Image Include="textures\left.tga" />
+    <Image Include="textures\platform.bmp" />
+    <Image Include="textures\platform.jpg" />
     <Image Include="textures\rails.bmp" />
     <Image Include="textures\rails.jpg" />
     <Image Include="textures\right.tga" />
+    <Image Include="textures\station.bmp" />
     <Image Include="textures\top.tga" />
     <Image Include="textures\TowerTexture.bmp" />
+    <Image Include="textures\wall.bmp" />
+    <Image Include="textures\wall.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

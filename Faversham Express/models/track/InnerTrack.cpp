@@ -2,8 +2,8 @@
 
 InnerTrack::InnerTrack()
 {
-	TrackMinRadius = 100;
-	TrackMaxRadius = 100;
+	TrackMinRadius = 102;
+	TrackMaxRadius = 102;
 }
 
 float InnerTrack::getX(float angle, float radiusAddition)

@@ -75,6 +75,9 @@
     <ClInclude Include="textures\loadTGA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="models\RailwaySignal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -122,6 +125,9 @@
     <ClCompile Include="textures\loadTGA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="models\RailwaySignal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\TowerTexture.bmp">
@@ -143,6 +149,24 @@
     <Image Include="textures\top.tga" />
     <Image Include="textures\right.tga" />
     <Image Include="textures\rails.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\concrete.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\platform.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\platform.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\wall.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\wall.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\station.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

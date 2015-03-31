@@ -1,6 +1,5 @@
 #include "Stage.h"
 
-
 Stage::Stage()
 {
 	//txId = loadTexture("./textures/GrassTexture.bmp", GL_DIFFUSE);
@@ -15,6 +14,13 @@ Stage::Stage()
 
 	glMaterialfv(GL_FRONT, GL_SPECULAR, white);
 	glMaterialf(GL_FRONT, GL_SHININESS, 50);
+	cameraAngle = 0;
+	cameraViewAngle = 0;
+}
+
+void Stage::setAngle(int angle)
+{
+	cameraAngle = angle;
 }
 
 void Stage::draw()
@@ -29,9 +35,29 @@ void Stage::draw()
 	glDisable(GL_TEXTURE_2D);
 }
 
+void Stage::changeCameraViewAngle(int change)
+{
+	cameraViewAngle -= change;
+}
+
 void Stage::drawCamera()
 {
-	gluLookAt(-80, 50, 180, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	const float CDR = 3.14159265 / 180.0;		//Degrees to radians conversion factor
+	switch (cameraAngle)
+	{
+	default:
+	case -1: {
+		float x = 196.0 * cosf((float)cameraViewAngle * CDR);
+		float z = 196.0 * sinf((float)cameraViewAngle * CDR);
+		gluLookAt(x, 50, z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+		break;
+	}
+	case 0: gluLookAt(-139, 50, -139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
+	case 1: gluLookAt(139, 50, -139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
+	case 2: gluLookAt(139, 50, 139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
+	case 3: gluLookAt(-139, 50, 139, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0); break;
+	}
+	
 }
 
 //-- Ground Plane --------------------------------------------------------

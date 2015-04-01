@@ -14,7 +14,6 @@ Barrier::Barrier(float rotationAngle, float xPos, float zPos, GLenum light)
 	float orange[4] = { 0.91, 0.46, 0.0, 1.0 };
 
 	glEnable(light);
-	//glLightfv(light, GL_AMBIENT, grey);
 	glLightfv(light, GL_DIFFUSE, orange);
 	glLightfv(light, GL_SPECULAR, orange);
 	glLightf(light, GL_SPOT_CUTOFF, 40.0);

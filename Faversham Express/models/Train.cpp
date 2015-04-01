@@ -67,6 +67,7 @@ void Train::engine()
 	gluDisk(SceneObject::q, 0.0, 5.0, 20, 3);
 
 	glDisable(GL_LIGHTING);
+	glLightModeli(GL_LIGHT_MODEL_COLOR_CONTROL, GL_SEPARATE_SPECULAR_COLOR);
 	glColor4f(1.0, 1.0, 0.0, 1.0);
 	glTranslatef(0.0, 4.0, 0.2);
 	gluDisk(SceneObject::q, 0.0, 1.0, 20, 2);  //headlight!
@@ -189,5 +190,5 @@ Train::Train(int carriagesCount, TrackDefinition* trackdef, GLenum light, bool r
 	glLightfv(light, GL_DIFFUSE, white);
 	glLightfv(light, GL_SPECULAR, white);
 	glLightf(light, GL_SPOT_CUTOFF, 35.0);
-	glLightf(light, GL_SPOT_EXPONENT, 0.1);
+	glLightf(light, GL_SPOT_EXPONENT, 0.5);
 }

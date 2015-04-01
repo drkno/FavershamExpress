@@ -6,9 +6,10 @@
 class TrainStation : public SceneObject
 {
 public:
-	TrainStation(float, float, float);
+	TrainStation(float, float, float, GLenum);
 
 private:
+	GLenum light;
 	float rotationAngle;
 	float x;
 	float z;

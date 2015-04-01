@@ -117,8 +117,8 @@ Scene::Scene()
 	train2->addNotificationAngle(railwayBarrier2, 50, 0);
 	train2->addNotificationAngle(railwayBarrier2, 120, 0);
 
-	trainStation1 = new TrainStation(90, -32, 92);
-	trainStation2 = new TrainStation(-90, 32, 130);
+	trainStation1 = new TrainStation(90, -32, 92, GL_LIGHT3);
+	trainStation2 = new TrainStation(-90, 32, 130, GL_LIGHT7);
 
 	cameraIndex = 3;
 	changeCamera();

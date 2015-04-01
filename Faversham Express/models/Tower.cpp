@@ -25,6 +25,8 @@ void Tower::draw()
 	glTranslatef(xPos, 0, zPos);
 	glRotatef(rotationAngle, 0, 1, 0);
 
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+
 	const int N = 18;
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, txId);
@@ -43,7 +45,7 @@ void Tower::draw()
 	eye_x = 150.0 * sin(viewAngle*CDR);   //Update camera position
 	eye_z = 150.0 * cos(viewAngle*CDR);
 
-	glColor3f(0., 1., 1.);
+	glColor3f(1., 1., 1.);
 	glScalef(2, 2, 2);
 
 	for (int j = 0; j < 8; j++) {

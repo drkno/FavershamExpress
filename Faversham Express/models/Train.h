@@ -10,6 +10,8 @@ using namespace std;
 
 #define ANGLE_STEP_SIZE 0.5
 #define ANGLE_RATIO 0.0174532925
+#define GL_SEPARATE_SPECULAR_COLOR 0x81FA
+#define GL_LIGHT_MODEL_COLOR_CONTROL 0x81F8
 
 class Train : public SceneObject
 {

@@ -62,6 +62,7 @@ void TrainTracks::textureRectangles(float radius)
 {
 	float x1, z1, x2, z2, x3, z3, x4, z4;  //four points of a quad
 
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_COLOR_MATERIAL);
 	glBindTexture(GL_TEXTURE_2D, txId);

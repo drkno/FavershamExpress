@@ -1,5 +1,6 @@
 #pragma once
 
+#include <math.h>
 #include "SceneObject.h"
 
 #define BACKGROUND_COLOUR 0.0, 0.0, 0.0, 0.0

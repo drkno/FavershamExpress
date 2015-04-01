@@ -1,5 +1,6 @@
 #pragma once
 
+#include <math.h>
 #include <vector>
 #include "SceneObject.h"
 #include "Carriage.h"

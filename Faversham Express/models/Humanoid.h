@@ -1,5 +1,6 @@
 #pragma once
-#include "../models/SceneObject.h"
+#include <math.h>
+#include "SceneObject.h"
 class Humanoid : public SceneObject
 {
 public:

@@ -1,7 +1,8 @@
 #include "Barrier.h"
 
-Barrier::Barrier(float rotationAngle, float xPos, float zPos, GLenum light)
+Barrier::Barrier(float rotationAngle, float xPos, float zPos, GLenum light, bool alternateFlash)
 {
+	this->alternateFlash = alternateFlash;
 	this->light = light;
 	rotation = rotationAngle;
 	x = xPos;
@@ -70,17 +71,18 @@ void Barrier::draw()
 	glPopMatrix();
 
 	glPushMatrix();
-		if (loweredState != 0 && toggleIterator > 15)
+		if (!alternateFlash && loweredState != 0 && toggleIterator > 15 ||
+			alternateFlash && loweredState != 0 && toggleIterator <= 15)
 		{
 			glEnable(light);
+			glTranslatef(0, 25, -1);
+			glLightfv(light, GL_POSITION, lgt2_pos);
+			glLightfv(light, GL_SPOT_DIRECTION, spotDir);
 		}
-		else
+		else if (loweredState == 0)
 		{
 			glDisable(light);
 		}
-		glTranslatef(0, 25, -1);
-		glLightfv(light, GL_POSITION, lgt2_pos);
-		glLightfv(light, GL_SPOT_DIRECTION, spotDir);
 	glPopMatrix();
 
 	// light 1

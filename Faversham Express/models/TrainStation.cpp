@@ -18,7 +18,7 @@ TrainStation::TrainStation(float rotationAngle, float x, float z, GLenum light)
 	glEnable(light);
 	glLightfv(light, GL_DIFFUSE, yellow);
 	glLightfv(light, GL_SPECULAR, yellow);
-	glLightf(light, GL_SPOT_CUTOFF, 40.0);
+	glLightf(light, GL_SPOT_CUTOFF, 45.0);
 	glLightf(light, GL_SPOT_EXPONENT, 0.1);
 }
 
@@ -113,6 +113,7 @@ void TrainStation::draw()
 	glTranslatef(x, 0, z);
 	glRotatef(rotationAngle, 0, 1, 0);
 
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	walkHuman();
 	glColor3f(0.36, 0.35, 0.33);
 	end(0, -1);
@@ -121,7 +122,7 @@ void TrainStation::draw()
 
 	glEnable(GL_LIGHTING);
 	float lgt2_pos[] = { 0.0f, 0.0f, 0.0f, 1.0f };
-	float spotDir[] = { 0.0, -1.0, 0.0 };
+	float spotDir[] = { -0.5, -1.0, 0 };
 
 	glTranslatef((points[10] + points[12]) / 2, points[11], depth / 2);
 

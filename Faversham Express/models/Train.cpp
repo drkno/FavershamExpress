@@ -106,7 +106,6 @@ void Train::draw()
 		glPushMatrix();
 			float lgt2_pos[] = { 0.0f, 14.0f, 0.0f, 1.0f };
 			float spotDir[] = { -1.0, -1.0, 0.0 };
-			//glRotatef(-90, 0, 1, 0);
 			glLightfv(light, GL_POSITION, lgt2_pos);
 			glLightfv(light, GL_SPOT_DIRECTION, spotDir);
 

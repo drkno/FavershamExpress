@@ -18,6 +18,17 @@ Tower::Tower(float angle, float x, float z)
 	xPos = x;
 	zPos = z;
 	txId = loadTexture("./textures/TowerTexture.bmp", GL_MODULATE);
+
+	glEnable(GL_LIGHT0);
+
+
+	float grey[4] = { 0.2, 0.2, 0.2, 1.0 };
+	float white[4] = { 1.0, 1.0, 1.0, 1.0 };
+
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, white);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, white);
+	glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 30.0);
+	glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, 0.5);
 }
 
 void Tower::draw()
@@ -78,4 +89,16 @@ void Tower::draw()
 	}
 
 	glDisable(GL_TEXTURE_2D);
+
+	glPushMatrix();
+	float lgt2_pos[] = { 0.0f, 10.0f, 0.0f, 1.0f };
+	float spotDir[] = { 0.25, -1.0, 0.0 };
+
+	glColor3f(1, 1, 1);
+	glTranslatef(10, 0, 0);
+	glLightfv(GL_LIGHT0, GL_POSITION, lgt2_pos);
+	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, spotDir);
+	glScalef(2, 4, 2);
+	glutSolidCube(4);
+	glPopMatrix();
 }

@@ -5,7 +5,6 @@ Stage::Stage()
 	float grey[4] = { 0.2, 0.2, 0.2, 1.0 };
 	float white[4] = { 1.0, 1.0, 1.0, 1.0 };
 
-
 	glMaterialfv(GL_FRONT, GL_SPECULAR, white);
 	glMaterialf(GL_FRONT, GL_SHININESS, 100);
 	cameraAngle = 1;
@@ -19,9 +18,6 @@ void Stage::setAngle(int angle)
 
 void Stage::draw()
 {
-	float lgt1_pos[] = { 0.0f, 50.0f, 0.0f, 1.0f };  //light0 position (directly above the origin)
-	//glLightfv(GL_LIGHT0, GL_POSITION, lgt1_pos);   //light position
-
 	floor();
 }
 
@@ -65,7 +61,6 @@ void Stage::floor()
 
 	//The floor is made up of several tiny squares on a 200x200 grid. Each square has a unit size.
 	glBegin(GL_QUADS);
-	
 	for (int i = -HALF_WIDTH; i < HALF_WIDTH; i++)
 	{
 		for (int j = -HALF_DEPTH; j < HALF_DEPTH; j++)
@@ -75,6 +70,17 @@ void Stage::floor()
 			glVertex3f(i + 1, 0.0, j + 1);
 			glVertex3f(i + 1, 0.0, j);
 		}
+	}
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glColor4f(0.1, 0.1, 0.1, 1.0);
+	for (int i = -HALF_WIDTH; i < HALF_WIDTH; i++)
+	{
+		glVertex3f(i, 0.0, 0.0);
+		glVertex3f(i, 0.0, 1);
+		glVertex3f(i + 1, 0.0, 1);
+		glVertex3f(i + 1, 0.0, 0);
 	}
 
 	glEnd();

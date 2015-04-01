@@ -1,5 +1,4 @@
 #include "OuterTrack.h"
-#include <iostream>
 
 float OuterTrack::getX(float angle, float radiusAddition)
 {

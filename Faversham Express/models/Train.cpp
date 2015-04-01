@@ -93,8 +93,6 @@ void Train::draw()
 	float lgt2_pos[] = { 0.0f, 14.0f, 0.0f, 1.0f };
 	float spotDir[] = { reverseDirection ? 1.0 : -1.0, reverseDirection ? 1.0 : -1.0, 0.0 };
 
-	cout << angle << endl;
-
 	glPushMatrix();
 		float x = trackDefinition->getX(reverseDirection ? -angle : angle);
 		float z = trackDefinition->getZ(reverseDirection ? -angle : angle);

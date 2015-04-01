@@ -9,7 +9,7 @@
 #define WINDOW_XPOS 50
 #define WINDOW_YPOS 50
 #define WINDOW_TITLE "Faversham Express"
-#define CALLBACK_RATE 10
+#define CALLBACK_RATE 30
 
 class OpenGLManager
 {

@@ -93,8 +93,6 @@ void Train::draw()
 	if (angle >= 360.0) angle = 0.0;
 	else if (angle < 0.0) angle = 359.0;
 
-	if (!reverseDirection) std::cout << angle << std::endl;
-
 	glPushMatrix();
 		float x = trackDefinition->getX(reverseDirection ? -angle : angle);
 		float z = trackDefinition->getZ(reverseDirection ? -angle : angle);

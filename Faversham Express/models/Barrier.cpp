@@ -1,7 +1,8 @@
 #include "Barrier.h"
 
-Barrier::Barrier(float rotationAngle, float xPos, float zPos)
+Barrier::Barrier(float rotationAngle, float xPos, float zPos, GLenum light)
 {
+	this->light = light;
 	rotation = rotationAngle;
 	x = xPos;
 	z = zPos;
@@ -13,11 +14,11 @@ Barrier::Barrier(float rotationAngle, float xPos, float zPos)
 	float green[4] = { 0.0, 1.0, 0.0, 1.0 };
 
 	glEnable(GL_LIGHT7);
-	glLightfv(GL_LIGHT7, GL_AMBIENT, grey);
-	glLightfv(GL_LIGHT7, GL_DIFFUSE, green);
-	glLightfv(GL_LIGHT7, GL_SPECULAR, green);
-	glLightf(GL_LIGHT7, GL_SPOT_CUTOFF, 40.0);
-	glLightf(GL_LIGHT7, GL_SPOT_EXPONENT, 0.1);
+	//glLightfv(GL_LIGHT7, GL_AMBIENT, grey);
+	//glLightfv(GL_LIGHT7, GL_DIFFUSE, green);
+	//glLightfv(GL_LIGHT7, GL_SPECULAR, green);
+	//glLightf(GL_LIGHT7, GL_SPOT_CUTOFF, 40.0);
+	//glLightf(GL_LIGHT7, GL_SPOT_EXPONENT, 0.1);
 }
 
 void Barrier::draw()
@@ -114,7 +115,9 @@ void Barrier::drawLight(bool on)
 			if (on) glColor3f(0.91, 0.46, 0);
 			else glColor3f(0, 0, 0);
 			glTranslatef(0, 0, -0.01);
+			glDisable(GL_LIGHTING);
 			gluDisk(SceneObject::q, 0.0, 2.0, 20, 3);
+			glEnable(GL_LIGHTING);
 		glPopMatrix();
 		glColor3f(0, 0, 0);
 		glTranslatef(0, 0, -2);

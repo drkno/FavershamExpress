@@ -32,7 +32,9 @@ void RailwaySignal::drawSignal(int signalNum)
 			case 1: glColor3f(1, 0, 0); break; // red signal
 			case 2: glColor3f(1, 0.55, 0); break; // orange signal
 			}
+			glDisable(GL_LIGHTING);
 			gluDisk(SceneObject::q, 0.0, 1.0, 20, 3);
+			glEnable(GL_LIGHTING);
 		glPopMatrix();
 		glColor3f(0, 0, 0);
 		glTranslatef(0, 0, -2);

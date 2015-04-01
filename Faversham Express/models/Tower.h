@@ -6,11 +6,12 @@
 class Tower: public SceneObject
 {
 public:
-	Tower();
+	Tower(float, float, float);
 
 private:
 	GLuint txId;			//Texture id
 	float viewAngle = 0.0;	//Camera view angle
+	float rotationAngle, xPos, zPos;
 
 	void draw();
 	void normal(float x1, float y1, float z1,

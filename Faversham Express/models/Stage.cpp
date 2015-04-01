@@ -5,13 +5,13 @@ Stage::Stage()
 	float grey[4] = { 0.2, 0.2, 0.2, 1.0 };
 	float white[4] = { 1.0, 1.0, 1.0, 1.0 };
 
-	glEnable(GL_LIGHT0);
+	/*glEnable(GL_LIGHT0);
 	glLightfv(GL_LIGHT0, GL_AMBIENT, grey);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, white);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, white);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, white);*/
 
 	glMaterialfv(GL_FRONT, GL_SPECULAR, white);
-	glMaterialf(GL_FRONT, GL_SHININESS, 50);
+	glMaterialf(GL_FRONT, GL_SHININESS, 100);
 	cameraAngle = 1;
 	cameraViewAngle = 0;
 }
@@ -25,6 +25,7 @@ void Stage::draw()
 {
 	float lgt1_pos[] = { 0.0f, 50.0f, 0.0f, 1.0f };  //light0 position (directly above the origin)
 	glLightfv(GL_LIGHT0, GL_POSITION, lgt1_pos);   //light position
+
 	floor();
 }
 
@@ -62,7 +63,7 @@ void Stage::floor()
 	float black[4] = { 0 };
 	float green[4] = { 0.0, 1.0, 0.0, 1.0 };
 
-	glColor4f(0.17, 0.22, 0.0, 1.0);
+	glColor4f(0.048, 0.109, 0.048, 1.0);
 	glNormal3f(0.0, 1.0, 0.0);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, black);  //No specular reflections from the floor.
 

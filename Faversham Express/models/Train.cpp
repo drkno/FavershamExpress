@@ -65,10 +65,12 @@ void Train::engine()
 	gluCylinder(SceneObject::q, 5.0, 5.0, 14.0, 20, 5);
 	glTranslatef(0.0, 0.0, 14.0);
 	gluDisk(SceneObject::q, 0.0, 5.0, 20, 3);
+
+	glDisable(GL_LIGHTING);
 	glColor4f(1.0, 1.0, 0.0, 1.0);
 	glTranslatef(0.0, 4.0, 0.2);
 	gluDisk(SceneObject::q, 0.0, 1.0, 20, 2);  //headlight!
-
+	glEnable(GL_LIGHTING);
 
 	glPopMatrix();
 }
@@ -177,9 +179,9 @@ Train::Train(int carriagesCount, TrackDefinition* trackdef, GLenum light, bool r
 	float white[4] = { 1.0, 1.0, 1.0, 1.0 };
 
 	glEnable(light);
-	glLightfv(light, GL_AMBIENT, grey);
+	//glLightfv(light, GL_AMBIENT, white);
 	glLightfv(light, GL_DIFFUSE, white);
 	glLightfv(light, GL_SPECULAR, white);
-	glLightf(light, GL_SPOT_CUTOFF, 30.0);
-	glLightf(light, GL_SPOT_EXPONENT, 0.01);
+	glLightf(light, GL_SPOT_CUTOFF, 35.0);
+	glLightf(light, GL_SPOT_EXPONENT, 0.1);
 }

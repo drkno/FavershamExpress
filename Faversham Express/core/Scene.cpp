@@ -9,9 +9,11 @@
 #include "../models/Skybox.h"
 #include "../models/RailwaySignal.h"
 #include "../models/Barrier.h"
+#include "../models/Moon.h"
 
 Stage* stage;
 Skybox* skybox;
+Moon* moon;
 Tower* tower;
 
 // Train 1 + Tracks 1
@@ -35,6 +37,7 @@ void Scene::display()
 	drawCamera();
 
 	stage->display();
+	moon->display();
 	skybox->display();
 	
 	trainStation1->display();
@@ -46,12 +49,13 @@ void Scene::display()
 	trainTracks2->display();
 	train2->display();
 
-	//tower->display();
+	tower->display();
 
 	railwaySignal1->display();
 	railwaySignal2->display();
 	railwayBarrier1->display();
 	railwayBarrier2->display();
+
 
 	glFlush();
 }
@@ -75,7 +79,8 @@ Scene::Scene()
 
 	stage = new Stage();
 	skybox = new Skybox();
-	tower = new Tower();
+	tower = new Tower(0, 0, -25);
+	moon = new Moon(0, 190, -380, GL_LIGHT4);
 
 	trackDefinition1 = new OuterTrack();
 	train1 = new Train(4, trackDefinition1, GL_LIGHT1);
@@ -100,13 +105,13 @@ Scene::Scene()
 	train2->addNotificationAngle(railwaySignal2, 35, ORANGE_SIGNAL);
 	train2->addNotificationAngle(railwaySignal2, 155, GREEN_SIGNAL);
 
-	railwayBarrier1 = new Barrier(180, 45, 130);
+	railwayBarrier1 = new Barrier(180, 45, 130, GL_LIGHT6);
 	train1->addNotificationAngle(railwayBarrier1, 90, 0);
 	train1->addNotificationAngle(railwayBarrier1, 20, 0);
 	train2->addNotificationAngle(railwayBarrier1, 50, 0);
 	train2->addNotificationAngle(railwayBarrier1, 120, 0);
 
-	railwayBarrier2 = new Barrier(0, 95, 75);
+	railwayBarrier2 = new Barrier(0, 95, 75, GL_LIGHT5);
 	train1->addNotificationAngle(railwayBarrier2, 90, 0);
 	train1->addNotificationAngle(railwayBarrier2, 20, 0);
 	train2->addNotificationAngle(railwayBarrier2, 50, 0);

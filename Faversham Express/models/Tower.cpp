@@ -12,13 +12,19 @@ void Tower::normal(float x1, float y1, float z1,
 	glNormal3f(nx, ny, nz);
 }
 
-Tower::Tower()
+Tower::Tower(float angle, float x, float z)
 {
-	txId = loadTexture("./textures/TowerTexture.bmp");
+	rotationAngle = angle;
+	xPos = x;
+	zPos = z;
+	txId = loadTexture("./textures/TowerTexture.bmp", GL_MODULATE);
 }
 
 void Tower::draw()
 {
+	glTranslatef(xPos, 0, zPos);
+	glRotatef(rotationAngle, 0, 1, 0);
+
 	const int N = 18;
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, txId);

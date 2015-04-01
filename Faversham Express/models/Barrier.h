@@ -6,10 +6,11 @@
 class Barrier : public SceneObject, public TrackCallback
 {
 public:
-	Barrier(float, float, float);
+	Barrier(float, float, float, GLenum);
 	void toggleBarrier();
 
 private:
+	GLenum light;
 	int toggleIterator;
 	int loweredState;
 	float loweredAngle;

@@ -25,7 +25,7 @@ GLUquadric* SceneObject::getQuad()
 }
 
 //--------Loads a bitmap texture------------------------------------------
-GLuint SceneObject::loadTexture(std::string texture, GLint param)
+GLuint SceneObject::loadTexture(std::string texture, GLint param, int rawWidth, int rawHeight)
 {
 	GLuint textureId;
 	glGenTextures(1, &textureId); 				// Create a Texture object
@@ -33,6 +33,10 @@ GLuint SceneObject::loadTexture(std::string texture, GLint param)
 	if (texture.find(".bmp") != std::string::npos)
 	{
 		loadBMP(texture);
+	}
+	else if (texture.find(".raw") != std::string::npos)
+	{
+		loadRAW(texture, rawWidth, rawHeight);
 	}
 	else
 	{

@@ -69,6 +69,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="textures\Moon.raw" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="models\Humanoid.h" />
@@ -85,9 +86,11 @@
     <ClInclude Include="models\track\OuterTrack.h" />
     <ClInclude Include="models\Skybox.h" />
     <ClInclude Include="models\RailwaySignal.h" />
+    <ClInclude Include="models\Moon.h" />
     <ClInclude Include="textures\loadBMP.h" />
     <ClInclude Include="models\TrainStation.h" />
     <ClInclude Include="models\track\TrackDefinition.h" />
+    <ClInclude Include="textures\loadRAW.h" />
     <ClInclude Include="textures\loadTGA.h" />
     <ClInclude Include="models\TrackCallback.h" />
   </ItemGroup>
@@ -108,7 +111,9 @@
     <ClCompile Include="models\track\OuterTrack.cpp" />
     <ClCompile Include="models\Skybox.cpp" />
     <ClCompile Include="models\RailwaySignal.cpp" />
+    <ClCompile Include="models\Moon.cpp" />
     <ClCompile Include="textures\loadBMP.cpp" />
+    <ClCompile Include="textures\loadRAW.cpp" />
     <ClCompile Include="textures\loadTGA.cpp" />
   </ItemGroup>
   <ItemGroup>

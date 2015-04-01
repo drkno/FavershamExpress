@@ -28,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="textures\Moon.raw" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\OpenGLManager.h">
@@ -87,6 +88,12 @@
     <ClInclude Include="models\TrackCallback.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="models\Moon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="textures\loadRAW.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -141,6 +148,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="models\Humanoid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="models\Moon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="textures\loadRAW.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

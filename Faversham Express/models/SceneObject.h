@@ -3,6 +3,7 @@
 #include <GL/freeglut.h>
 #include "../textures/loadBMP.h"
 #include "../textures/loadTGA.h"
+#include "../textures/loadRAW.h"
 
 class SceneObject
 {
@@ -17,6 +18,6 @@ public:
 protected:
 	static GLUquadric* q;
 	virtual void draw();
-	static GLuint loadTexture(std::string, GLint = GL_DIFFUSE);
+	static GLuint loadTexture(std::string, GLint, int = 0, int = 0);
 };
 

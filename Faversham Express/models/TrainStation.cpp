@@ -8,7 +8,7 @@ TrainStation::TrainStation(float rotationAngle, float x, float z)
 	this->rotationAngle = rotationAngle;
 	this->x = x;
 	this->z = z;
-	txId = loadTexture("./textures/station.bmp");
+	txId = loadTexture("./textures/station.bmp", GL_MODULATE);
 	humanoid = new Humanoid();
 }
 

@@ -2,8 +2,6 @@
 
 Stage::Stage()
 {
-	//txId = loadTexture("./textures/GrassTexture.bmp", GL_DIFFUSE);
-
 	float grey[4] = { 0.2, 0.2, 0.2, 1.0 };
 	float white[4] = { 1.0, 1.0, 1.0, 1.0 };
 
@@ -25,14 +23,9 @@ void Stage::setAngle(int angle)
 
 void Stage::draw()
 {
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, txId);
-
 	float lgt1_pos[] = { 0.0f, 50.0f, 0.0f, 1.0f };  //light0 position (directly above the origin)
 	glLightfv(GL_LIGHT0, GL_POSITION, lgt1_pos);   //light position
 	floor();
-
-	glDisable(GL_TEXTURE_2D);
 }
 
 void Stage::changeCameraViewAngle(int change)
@@ -65,7 +58,6 @@ void Stage::drawCamera()
 //-- Ground Plane --------------------------------------------------------
 void Stage::floor()
 {
-	const float textureScale = 0.03;
 	float white[4] = { 1., 1., 1., 1. };
 	float black[4] = { 0 };
 	float green[4] = { 0.0, 1.0, 0.0, 1.0 };
@@ -79,20 +71,22 @@ void Stage::floor()
 	
 	for (int i = -HALF_WIDTH; i < HALF_WIDTH; i++)
 	{
-		float x = (i + HALF_WIDTH) * textureScale;
 		for (int j = -HALF_DEPTH; j < HALF_DEPTH; j++)
 		{
-			float z = (j + HALF_DEPTH) * textureScale;
-			glTexCoord2f(x, z);
 			glVertex3f(i, 0.0, j);
-			glTexCoord2f(x, z + textureScale);
 			glVertex3f(i, 0.0, j + 1);
-			glTexCoord2f(x + textureScale, z + textureScale);
 			glVertex3f(i + 1, 0.0, j + 1);
-			glTexCoord2f(x + textureScale, z);
 			glVertex3f(i + 1, 0.0, j);
 		}
 	}
+
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glVertex3f(-4 * HALF_WIDTH, -0.01, -4 * HALF_DEPTH);
+	glVertex3f(4 * HALF_WIDTH, -0.01, -4 * HALF_DEPTH);
+	glVertex3f(4 * HALF_WIDTH, -0.01, 4 * HALF_DEPTH);
+	glVertex3f(-4 * HALF_WIDTH, -0.01, 4 * HALF_DEPTH);
 	glEnd();
 
 	glMaterialfv(GL_FRONT, GL_SPECULAR, white);  //Enable specular reflections for remaining objects

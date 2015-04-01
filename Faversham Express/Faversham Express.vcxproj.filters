@@ -161,28 +161,7 @@
     <Image Include="textures\TowerTexture.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="textures\GrassTexture.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="textures\back.tga" />
-    <Image Include="textures\down.tga" />
-    <Image Include="textures\front.tga" />
-    <Image Include="textures\GrassTexture.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="textures\left.tga" />
     <Image Include="textures\rails.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="textures\top.tga" />
-    <Image Include="textures\right.tga" />
-    <Image Include="textures\rails.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="textures\concrete.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="textures\platform.jpg">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="textures\platform.bmp">
@@ -191,11 +170,13 @@
     <Image Include="textures\wall.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="textures\wall.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="textures\station.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="textures\rightn.tga" />
+    <Image Include="textures\topn.tga" />
+    <Image Include="textures\backn.tga" />
+    <Image Include="textures\frontn.tga" />
+    <Image Include="textures\leftn.tga" />
   </ItemGroup>
 </Project>

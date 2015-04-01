@@ -92,8 +92,7 @@ void Train::draw()
 	if (angle >= 360.0) angle = 0.0;
 	else if (angle < 0.0) angle = 359.0;
 
-	float lgt2_pos[] = { 0.0f, 14.0f, 0.0f, 1.0f };
-	float spotDir[] = { reverseDirection ? 1.0 : -1.0, reverseDirection ? 1.0 : -1.0, 0.0 };
+	
 
 	glPushMatrix();
 		float x = trackDefinition->getX(reverseDirection ? -angle : angle);
@@ -102,8 +101,15 @@ void Train::draw()
 		glTranslatef(x, 1.0, z);
 
 		glRotatef(trackDefinition->getTangentAngle(reverseDirection ? -angle : angle) + 90, 0, 1, 0);
-		glLightfv(light, GL_POSITION, lgt2_pos);
-		glLightfv(light, GL_SPOT_DIRECTION, spotDir);
+
+		glPushMatrix();
+			float lgt2_pos[] = { 0.0f, 14.0f, 0.0f, 1.0f };
+			float spotDir[] = { -1.0, -1.0, 0.0 };
+			//glRotatef(-90, 0, 1, 0);
+			glLightfv(light, GL_POSITION, lgt2_pos);
+			glLightfv(light, GL_SPOT_DIRECTION, spotDir);
+
+		glPopMatrix();
 
 		engine();
 	glPopMatrix();

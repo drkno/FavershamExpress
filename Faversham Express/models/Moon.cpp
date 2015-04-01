@@ -35,7 +35,13 @@ Moon::Moon(float x, float y, float z, GLenum light)
 
 void Moon::draw()
 {
+	static float rotationAngle = 0;
+	if (rotationAngle >= 360) rotationAngle = 0;
+	rotationAngle += 0.25;
+
 	glTranslatef(x, y, z);
+	glRotatef(45, 1, 1, 0);
+	glRotatef(rotationAngle, 0, 1, 0);
 
 	const float moonLightColour[] = { 0.0f, 0.0f, 0.0f, 0.0f };
 	const float moonLightPos[] = { 0.0f, 0.0f, 0.0f };
@@ -48,7 +54,7 @@ void Moon::draw()
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 	glPushMatrix();
 		glRotatef(-90., 1.0, 0., 0.0);   //make the sphere axis vertical
-		gluSphere(q, 40.0, 36, 17);
+		gluSphere(q, 30.0, 36, 17);
 	glPopMatrix();
 	glPushMatrix();
 		glLightfv(light, GL_POSITION, moonLightPos);

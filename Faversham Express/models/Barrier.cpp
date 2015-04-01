@@ -11,9 +11,14 @@ Barrier::Barrier(float rotationAngle, float xPos, float zPos, GLenum light)
 	loweredAngle = -90;
 
 	float grey[4] = { 0.2, 0.2, 0.2, 1.0 };
-	float green[4] = { 0.0, 1.0, 0.0, 1.0 };
+	float white[4] = { 1.0, 1.0, 1.0, 1.0 };
 
-	glEnable(GL_LIGHT7);
+	glEnable(light);
+	glLightfv(light, GL_AMBIENT, grey);
+	glLightfv(light, GL_DIFFUSE, white);
+	glLightfv(light, GL_SPECULAR, white);
+	glLightf(light, GL_SPOT_CUTOFF, 40.0);
+	glLightf(light, GL_SPOT_EXPONENT, 0.1);
 	//glLightfv(GL_LIGHT7, GL_AMBIENT, grey);
 	//glLightfv(GL_LIGHT7, GL_DIFFUSE, green);
 	//glLightfv(GL_LIGHT7, GL_SPECULAR, green);
@@ -48,17 +53,20 @@ void Barrier::draw()
 	}
 
 	if (toggleIterator > 30) toggleIterator = 0;
+	
+	glEnable(GL_LIGHTING);
+	glPushMatrix();
+	float lgt2_pos[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	float spotDir[] = { 0.0, 0.0, -1.0 };
+	glTranslatef(0, 0, 15);
+	glRotatef(90, 0, 1, 0);
+	glLightfv(light, GL_POSITION, lgt2_pos);
+	glLightfv(light, GL_SPOT_DIRECTION, spotDir);
+	glPopMatrix();
 
 	glTranslatef(x, 0, z);
 	glRotatef(rotation, 0, 1, 0);
 
-	float lgt2_pos[] = { -10.0f, 14.0f, -120.0f, 1.0f };
-	float spotDir[] = { -1.0, -1.0, 0.2 };
-
-	glPushMatrix();
-	glLightfv(GL_LIGHT7, GL_POSITION, lgt2_pos);
-	glLightfv(GL_LIGHT7, GL_SPOT_DIRECTION, spotDir);
-	glPopMatrix();
 
 	// pole
 	glPushMatrix();
@@ -75,14 +83,14 @@ void Barrier::draw()
 
 	// light 1
 	glPushMatrix();
-	glTranslatef(-5.0, 25.0, -1.0);
-	drawLight(loweredState != 0 && toggleIterator > 15);
+		glTranslatef(-5.0, 25.0, -1.0);
+		drawLight(loweredState != 0 && toggleIterator > 15);
 	glPopMatrix();
 
 	// light 2
 	glPushMatrix();
-	glTranslatef(5.0, 25.0, -1.0);
-	drawLight(loweredState != 0 && toggleIterator <= 15);
+		glTranslatef(5.0, 25.0, -1.0);
+		drawLight(loweredState != 0 && toggleIterator <= 15);
 	glPopMatrix();
 
 	glColor3f(1, 1, 1);

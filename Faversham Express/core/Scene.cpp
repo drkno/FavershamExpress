@@ -45,9 +45,9 @@ void Scene::display()
 
 	trainTracks1->display();
 	train1->display();
+	train2->display();
 
 	trainTracks2->display();
-	train2->display();
 
 	tower->display();
 
@@ -80,7 +80,7 @@ Scene::Scene()
 	stage = new Stage();
 	skybox = new Skybox();
 	tower = new Tower(0, 0, -25);
-	moon = new Moon(0, 190, -380, GL_LIGHT4);
+	moon = new Moon(15, 175, -320, GL_LIGHT4);
 
 	trackDefinition1 = new OuterTrack();
 	train1 = new Train(4, trackDefinition1, GL_LIGHT1);

@@ -1,4 +1,5 @@
 #include "OuterTrack.h"
+#include <iostream>
 
 float OuterTrack::getX(float angle, float radiusAddition)
 {
@@ -20,7 +21,23 @@ float OuterTrack::getNormalZ(float z, float radiusAddition)
 	return z*(TrackMaxRadius + radiusAddition) / (TrackMinRadius + radiusAddition);
 }
 
-float OuterTrack::getTangentAngle(float x1, float z1, float x2, float z2)
+float OuterTrack::getTangentAngle(float angle)
 {
-	return 0.0;
+	float x = getX(angle - 0.5, 0) - getX(angle + 0.5, 0);
+	float z = getZ(angle - 0.5, 0) - getZ(angle + 0.5, 0);
+
+	float tangentAngle = atanf(x / z) / CDR;
+
+	if (z < 0)
+	{
+		tangentAngle += 180;
+	}
+
+	return tangentAngle;
+}
+
+float OuterTrack::getSeparationAngle(float angle, float length)
+{
+	const float PI = 3.14159265;
+	return 2.5 * cosf((2.0 * PI * angle) / 180.0) + 8.5;
 }

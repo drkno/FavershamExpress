@@ -86,54 +86,42 @@ float Train::getCarrigeSubtractionAngle(float angle, float x, float z)
 
 void Train::draw()
 {
-	angle += reverseDirection ? -ANGLE_STEP_SIZE : ANGLE_STEP_SIZE;
-	if (angle >= 360.0 && !reverseDirection) angle = 0.0;
-	else if (angle <= 0.0 && reverseDirection) angle = 360.0;
+	angle += reverseDirection ? ANGLE_STEP_SIZE : -ANGLE_STEP_SIZE;
+	if (angle >= 360.0) angle = 0.0;
+	else if (angle < 0.0) angle = 359.0;
 
 	float lgt2_pos[] = { 0.0f, 14.0f, 0.0f, 1.0f };
 	float spotDir[] = { reverseDirection ? 1.0 : -1.0, reverseDirection ? 1.0 : -1.0, 0.0 };
 
-	glRotatef(angle, 0, 1, 0);
-
 	glPushMatrix();
-		
-	glPopMatrix();
+	float x = trackDefinition->getX(reverseDirection ? -angle : angle);
+	float z = trackDefinition->getZ(reverseDirection ? -angle : angle);
 
-	glPushMatrix();
-		//glRotatef(trackDefinition->getTangentAngle(0,0,0,0), 0, 1, 0);
-		//glTranslatef(trackDefinition->getX(angle), 1.0, trackDefinition->getZ(angle));
+		glTranslatef(x, 1.0, z);
 
-		glTranslatef(0.0, 1.0, -trackDefinition->getMaxRadius());
-
+		glRotatef(trackDefinition->getTangentAngle(reverseDirection ? -angle : angle) + 90, 0, 1, 0);
 		glLightfv(light, GL_POSITION, lgt2_pos);
 		glLightfv(light, GL_SPOT_DIRECTION, spotDir);
 
-		if (reverseDirection) glRotatef(180, 0, 1, 0);
 		engine();
 	glPopMatrix();
 
-	float separateAngle = (atanf(23/120.0) / ANGLE_RATIO);
-	for (int i = 1; i <= carriages.size(); i++) {
+	float separateAngle = reverseDirection ? -angle : angle;
+	for (int i = 1; i <= carriages.size(); i++)
+	{
 		glPushMatrix();
-			//float x = trackDefinition->getX(angle);
-			//float z = trackDefinition->getZ(angle);
+			separateAngle += trackDefinition->getSeparationAngle(separateAngle, 0);
+			glTranslatef(trackDefinition->getX(separateAngle), 1.0, trackDefinition->getZ(separateAngle));
+			glRotatef(trackDefinition->getTangentAngle(separateAngle) + 90, 0, 1, 0);
 
-			//glRotatef(getCarrigeSeparationAngle(cAngle), 0, 1, 0);
-			//glTranslatef(x, 1.0, z);
-		glRotatef((reverseDirection ? 1 : -1) * separateAngle * i, 0, 1, 0);
-			glTranslatef(0.0, 1.0, -trackDefinition->getMaxRadius());
-			if (reverseDirection) glRotatef(180, 0, 1, 0);
 			carriages[i-1].display();
-			//cAngle -= getCarrigeSubtractionAngle(cAngle, x, z);
 		glPopMatrix();
 	}
 }
 
 void Train::drawCamera()
 {
-	glRotatef(70, 0, 1, 0);
-	glTranslatef(0.0, -25.0, -trackDefinition->getMaxRadius() + 5);
-	glRotatef(angle + 45, 0, 1, 0);
+	glTranslatef(trackDefinition->getX(angle), -25.0, trackDefinition->getZ(angle));
 	gluLookAt(0, 0, 0, 0, 0, 1, 0, 1, 0);
 }
 

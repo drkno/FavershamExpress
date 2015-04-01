@@ -43,7 +43,7 @@ void Scene::display()
 	stage->display();
 	skybox->display();
 	
-	trainStation->display();
+	//trainStation->display();
 
 	trainTracks1->display();
 	train1->display();
@@ -51,7 +51,7 @@ void Scene::display()
 	trainTracks2->display();
 	train2->display();
 
-	tower->display();
+	//tower->display();
 
 	railwaySignal1->display();
 	railwayBarrier->display();

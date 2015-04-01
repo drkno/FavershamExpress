@@ -70,19 +70,9 @@ void Stage::floor()
 			glVertex3f(i + 1, 0.0, j + 1);
 			glVertex3f(i + 1, 0.0, j);
 		}
+		if (i < 88 && i > 48) glColor4f(0.1, 0.1, 0.1, 1.0);
+		else glColor4f(0.048, 0.109, 0.048, 1.0);
 	}
-	glEnd();
-
-	glBegin(GL_QUADS);
-	glColor4f(0.1, 0.1, 0.1, 1.0);
-	for (int i = -HALF_WIDTH; i < HALF_WIDTH; i++)
-	{
-		glVertex3f(i, 0.0, 0.0);
-		glVertex3f(i, 0.0, 1);
-		glVertex3f(i + 1, 0.0, 1);
-		glVertex3f(i + 1, 0.0, 0);
-	}
-
 	glEnd();
 
 	glBegin(GL_POLYGON);

@@ -56,7 +56,6 @@ void Scene::display()
 	railwayBarrier1->display();
 	railwayBarrier2->display();
 
-
 	glFlush();
 }
 

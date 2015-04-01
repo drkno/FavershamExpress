@@ -93,20 +93,20 @@ Scene::Scene()
 	trainTracks2 = new TrainTracks(trackDefinition2);
 
 	railwaySignal1 = new RailwaySignal(-90, -50, -130);
-	train1->addNotificationAngle(railwaySignal1, 275, RED_SIGNAL);
-	train1->addNotificationAngle(railwaySignal1, 35, GREEN_SIGNAL);
-	train1->addNotificationAngle(railwaySignal1, 155, ORANGE_SIGNAL);
-	train2->addNotificationAngle(railwaySignal1, 275, GREEN_SIGNAL + SIGNAL_OFFSET);
-	train2->addNotificationAngle(railwaySignal1, 35, ORANGE_SIGNAL + SIGNAL_OFFSET);
-	train2->addNotificationAngle(railwaySignal1, 155, RED_SIGNAL + SIGNAL_OFFSET);
+	train1->addNotificationAngle(railwaySignal1, 271, RED_SIGNAL);
+	train1->addNotificationAngle(railwaySignal1, 31, GREEN_SIGNAL);
+	train1->addNotificationAngle(railwaySignal1, 151, ORANGE_SIGNAL);
+	train2->addNotificationAngle(railwaySignal1, 265, GREEN_SIGNAL + SIGNAL_OFFSET);
+	train2->addNotificationAngle(railwaySignal1, 31, ORANGE_SIGNAL + SIGNAL_OFFSET);
+	train2->addNotificationAngle(railwaySignal1, 151, RED_SIGNAL + SIGNAL_OFFSET);
 
 	railwaySignal2 = new RailwaySignal(90, -50, -90);
-	train1->addNotificationAngle(railwaySignal2, 275, GREEN_SIGNAL + SIGNAL_OFFSET);
-	train1->addNotificationAngle(railwaySignal2, 35, RED_SIGNAL + SIGNAL_OFFSET);
-	train1->addNotificationAngle(railwaySignal2, 155, ORANGE_SIGNAL + SIGNAL_OFFSET);
-	train2->addNotificationAngle(railwaySignal2, 275, RED_SIGNAL);
-	train2->addNotificationAngle(railwaySignal2, 35, ORANGE_SIGNAL);
-	train2->addNotificationAngle(railwaySignal2, 155, GREEN_SIGNAL);
+	train1->addNotificationAngle(railwaySignal2, 247, GREEN_SIGNAL + SIGNAL_OFFSET);
+	train1->addNotificationAngle(railwaySignal2, 22, RED_SIGNAL + SIGNAL_OFFSET);
+	train1->addNotificationAngle(railwaySignal2, 82, ORANGE_SIGNAL + SIGNAL_OFFSET);
+	train2->addNotificationAngle(railwaySignal2, 242, RED_SIGNAL);
+	train2->addNotificationAngle(railwaySignal2, 82, GREEN_SIGNAL);
+	train2->addNotificationAngle(railwaySignal2, 22, ORANGE_SIGNAL);
 
 	railwayBarrier1 = new Barrier(180, 45, 130, GL_LIGHT6);
 	train1->addNotificationAngle(railwayBarrier1, 90, 0);

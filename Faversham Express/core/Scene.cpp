@@ -26,6 +26,7 @@ Barrier* railwayBarrier1;
 Train* train2;
 TrainTracks* trainTracks2;
 TrackDefinition* trackDefinition2;
+RailwaySignal* railwaySignal2;
 Barrier* railwayBarrier2;
 TrainStation* trainStation2;
 
@@ -48,6 +49,7 @@ void Scene::display()
 	//tower->display();
 
 	railwaySignal1->display();
+	railwaySignal2->display();
 	railwayBarrier1->display();
 	railwayBarrier2->display();
 
@@ -78,11 +80,25 @@ Scene::Scene()
 	trackDefinition1 = new OuterTrack();
 	train1 = new Train(4, trackDefinition1, GL_LIGHT1);
 	trainTracks1 = new TrainTracks(trackDefinition1);
-	railwaySignal1 = new RailwaySignal(-135, 0, -30);
-
 	trackDefinition2 = new InnerTrack();
 	train2 = new Train(6, trackDefinition2, GL_LIGHT2, true);
 	trainTracks2 = new TrainTracks(trackDefinition2);
+
+	railwaySignal1 = new RailwaySignal(-90, 0, -130);
+	train1->addNotificationAngle(railwaySignal1, 275, RED_SIGNAL);
+	train1->addNotificationAngle(railwaySignal1, 35, GREEN_SIGNAL);
+	train1->addNotificationAngle(railwaySignal1, 155, ORANGE_SIGNAL);
+	train2->addNotificationAngle(railwaySignal1, 275, GREEN_SIGNAL + SIGNAL_OFFSET);
+	train2->addNotificationAngle(railwaySignal1, 35, ORANGE_SIGNAL + SIGNAL_OFFSET);
+	train2->addNotificationAngle(railwaySignal1, 155, RED_SIGNAL + SIGNAL_OFFSET);
+
+	railwaySignal2 = new RailwaySignal(90, 0, -90);
+	train1->addNotificationAngle(railwaySignal2, 275, GREEN_SIGNAL + SIGNAL_OFFSET);
+	train1->addNotificationAngle(railwaySignal2, 35, RED_SIGNAL + SIGNAL_OFFSET);
+	train1->addNotificationAngle(railwaySignal2, 155, ORANGE_SIGNAL + SIGNAL_OFFSET);
+	train2->addNotificationAngle(railwaySignal2, 275, RED_SIGNAL);
+	train2->addNotificationAngle(railwaySignal2, 35, ORANGE_SIGNAL);
+	train2->addNotificationAngle(railwaySignal2, 155, GREEN_SIGNAL);
 
 	railwayBarrier1 = new Barrier(180, 45, 130);
 	train1->addNotificationAngle(railwayBarrier1, 90, 0);

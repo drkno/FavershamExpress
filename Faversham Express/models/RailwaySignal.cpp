@@ -1,13 +1,11 @@
 #include "RailwaySignal.h"
 
-RailwaySignal::RailwaySignal(float x, float z, float rotation)
+RailwaySignal::RailwaySignal(float rotation, float x, float z)
 {
 	signalColours[0] = signalColours[1] = 0;
 	xPos = x;
 	zPos = z;
 	rotationAng = rotation;
-	signalChangeCount = 0;
-	srand((unsigned)time(0));
 }
 
 
@@ -71,13 +69,17 @@ void RailwaySignal::draw()
 		glTranslatef(-5, 16.0, -1.0);
 		drawSignal(1);
 	glPopMatrix();
+}
 
-	signalChangeCount++;
-	if (signalChangeCount == 180)
+void RailwaySignal::locationReachedCallback(int segment)
+{
+	switch (segment)
 	{
-		signalChangeCount = 0;
-		int light = (rand() % 2);
-		int colour = (rand() % 3);
-		switchColour(light, colour);
+	case 0: switchColour(0, 0); break;
+	case 1: switchColour(0, 1); break;
+	case 2: switchColour(0, 2); break;
+	case 3: switchColour(1, 0); break;
+	case 4: switchColour(1, 1); break;
+	case 5: switchColour(1, 2); break;
 	}
 }

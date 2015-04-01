@@ -1,14 +1,19 @@
 #pragma once
 
 #include "SceneObject.h"
-#include <cstdlib> 
-#include <ctime> 
+#include "TrackCallback.h"
 
-class RailwaySignal : public SceneObject
+#define GREEN_SIGNAL 0
+#define RED_SIGNAL 1
+#define ORANGE_SIGNAL 2
+#define SIGNAL_OFFSET 3
+
+class RailwaySignal : public SceneObject, public TrackCallback
 {
 public:
 	RailwaySignal(float,float,float);
 	void switchColour(int signalNumber, int colour);
+	void locationReachedCallback(int);
 
 private:
 	float xPos;

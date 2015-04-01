@@ -25,7 +25,7 @@ private:
 	bool reverseDirection;
 	GLenum light;
 	int cameraViewAngle;
-	vector<notification_t> notifications;
+	vector<notification_t*> notifications;
 
 	void base();
 	void engine();

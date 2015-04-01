@@ -122,9 +122,9 @@ void Train::draw()
 
 	for (int i = 0; i < notifications.size(); i++)
 	{
-		if (notifications[i].angle + ANGLE_STEP_SIZE > angle && notifications[i].angle - ANGLE_STEP_SIZE < angle)
+		if (notifications[i]->angle + ANGLE_STEP_SIZE > angle && notifications[i]->angle - ANGLE_STEP_SIZE < angle)
 		{
-			notifications[i].callback->locationReachedCallback(notifications[i].value);
+			notifications[i]->callback->locationReachedCallback(notifications[i]->value);
 		}
 	}
 }
@@ -157,10 +157,10 @@ void Train::setAngle(int angle)
 
 void Train::addNotificationAngle(TrackCallback* callback, float angle, int value)
 {
-	notification_t notification;
-	notification.callback = callback;
-	notification.angle = angle;
-	notification.value = value;
+	notification_t* notification = new notification_t();
+	notification->callback = callback;
+	notification->angle = angle;
+	notification->value = value;
 	notifications.push_back(notification);
 }
 

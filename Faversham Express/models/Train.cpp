@@ -93,9 +93,11 @@ void Train::draw()
 	float lgt2_pos[] = { 0.0f, 14.0f, 0.0f, 1.0f };
 	float spotDir[] = { reverseDirection ? 1.0 : -1.0, reverseDirection ? 1.0 : -1.0, 0.0 };
 
+	cout << angle << endl;
+
 	glPushMatrix();
-	float x = trackDefinition->getX(reverseDirection ? -angle : angle);
-	float z = trackDefinition->getZ(reverseDirection ? -angle : angle);
+		float x = trackDefinition->getX(reverseDirection ? -angle : angle);
+		float z = trackDefinition->getZ(reverseDirection ? -angle : angle);
 
 		glTranslatef(x, 1.0, z);
 
@@ -117,12 +119,49 @@ void Train::draw()
 			carriages[i-1].display();
 		glPopMatrix();
 	}
+
+	for (int i = 0; i < notifications.size(); i++)
+	{
+		if (notifications[i].angle + ANGLE_STEP_SIZE > angle && notifications[i].angle - ANGLE_STEP_SIZE < angle)
+		{
+			notifications[i].callback->locationReachedCallback(notifications[i].value);
+		}
+	}
 }
 
 void Train::drawCamera()
 {
-	glTranslatef(trackDefinition->getX(angle), -25.0, trackDefinition->getZ(angle));
-	gluLookAt(0, 0, 0, 0, 0, 1, 0, 1, 0);
+	float angle = reverseDirection ? -this->angle : this->angle;
+	float x = trackDefinition->getX(angle);
+	float z = trackDefinition->getZ(angle);
+	float sub = trackDefinition->getSeparationAngle(angle, 0);
+	float x1 = trackDefinition->getX(angle + sub);
+	float z1 = trackDefinition->getZ(angle + sub);
+
+	glRotatef(cameraViewAngle, 0, 1, 0);
+	glTranslatef(0, -24, 0);
+	gluLookAt(x1, 0, z1, x, 0, z, 0, 1, 0);
+}
+
+void Train::changeCameraViewAngle(int change)
+{
+	cameraViewAngle += change;
+	if (cameraViewAngle < 0) cameraViewAngle = 359;
+	if (cameraViewAngle >= 360) cameraViewAngle = 0;
+}
+
+void Train::setAngle(int angle)
+{
+	if (angle == 1)	cameraViewAngle = 0;
+}
+
+void Train::addNotificationAngle(TrackCallback* callback, float angle, int value)
+{
+	notification_t notification;
+	notification.callback = callback;
+	notification.angle = angle;
+	notification.value = value;
+	notifications.push_back(notification);
 }
 
 Train::Train(int carriagesCount, TrackDefinition* trackdef, GLenum light, bool reverseDirection)

@@ -1,8 +1,9 @@
 #pragma once
 
 #include "SceneObject.h"
+#include "TrackCallback.h"
 
-class Barrier : public SceneObject
+class Barrier : public SceneObject, public TrackCallback
 {
 public:
 	Barrier(float, float, float);
@@ -18,5 +19,6 @@ private:
 
 	void draw();
 	void drawLight(bool);
+	void locationReachedCallback(int);
 };
 

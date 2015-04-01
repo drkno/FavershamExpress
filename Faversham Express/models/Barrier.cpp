@@ -132,3 +132,8 @@ void Barrier::toggleBarrier()
 	case 3: loweredState = 1; break;	// lifting
 	}
 }
+
+void Barrier::locationReachedCallback(int)
+{
+	toggleBarrier();
+}

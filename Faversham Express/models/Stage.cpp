@@ -14,7 +14,7 @@ Stage::Stage()
 
 	glMaterialfv(GL_FRONT, GL_SPECULAR, white);
 	glMaterialf(GL_FRONT, GL_SHININESS, 50);
-	cameraAngle = 0;
+	cameraAngle = 1;
 	cameraViewAngle = 0;
 }
 
@@ -37,7 +37,10 @@ void Stage::draw()
 
 void Stage::changeCameraViewAngle(int change)
 {
+	cameraAngle = 0;
 	cameraViewAngle -= change;
+	if (cameraViewAngle < 0) cameraViewAngle = 359;
+	if (cameraViewAngle >= 360) cameraViewAngle = 0;
 }
 
 void Stage::drawCamera()
@@ -47,14 +50,14 @@ void Stage::drawCamera()
 	switch (cameraAngle)
 	{
 	default:
-	case -1: break;
-	case 0: cameraViewAngle = 45; break;
-	case 1: cameraViewAngle = 135; break;
-	case 2: cameraViewAngle = 225; break;
-	case 3: cameraViewAngle = 315; break;
+	case 0: break;
+	case 1: cameraViewAngle = 45; break;
+	case 2: cameraViewAngle = 135; break;
+	case 3: cameraViewAngle = 225; break;
+	case 4: cameraViewAngle = 315; break;
 	}
 
-	float x = 196.0 * cosf((float)cameraViewAngle * CDR);
+	float x = 392.0 * cosf((float)cameraViewAngle * CDR);
 	float z = 196.0 * sinf((float)cameraViewAngle * CDR);
 	gluLookAt(x, 50, z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 }

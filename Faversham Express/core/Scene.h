@@ -11,6 +11,7 @@ public:
 	~Scene();
 	void display();
 	void special(int, int, int);
+	void key(unsigned char, int, int);
 
 private:
 	int cameraIndex = 0;

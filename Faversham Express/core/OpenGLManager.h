@@ -23,5 +23,6 @@ private:
 	static void windowReshapeCallback(GLint, GLint);
 	static void specialKeypressCallback(int, int, int);
 	static void mouseClickCallback(int, int, int, int);
+	static void keypressCallback(unsigned char, int, int);
 };
 

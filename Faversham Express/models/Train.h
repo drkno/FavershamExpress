@@ -3,6 +3,7 @@
 #include <vector>
 #include "SceneObject.h"
 #include "Carriage.h"
+#include "TrackCallback.h"
 #include "track/TrackDefinition.h"
 
 using namespace std;
@@ -14,6 +15,8 @@ class Train : public SceneObject
 {
 public:
 	Train(int, TrackDefinition*, GLenum light, bool reverseDirection = false);
+	void changeCameraViewAngle(int);
+	void addNotificationAngle(TrackCallback*, float, int);
 
 private:
 	TrackDefinition* trackDefinition;
@@ -21,6 +24,8 @@ private:
 	float angle = 0.0;
 	bool reverseDirection;
 	GLenum light;
+	int cameraViewAngle;
+	vector<notification_t> notifications;
 
 	void base();
 	void engine();
@@ -29,5 +34,6 @@ private:
 	void drawCamera();
 	float getCarrigeSeparationAngle(float);
 	float getCarrigeSubtractionAngle(float, float, float);
+	void setAngle(int);
 };
 

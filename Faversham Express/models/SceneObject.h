@@ -11,6 +11,8 @@ public:
 	static GLUquadric* getQuad();
 	static void setQuad(GLUquadric*);
 	virtual void drawCamera();
+	virtual void setAngle(int);
+	virtual void changeCameraViewAngle(int);
 
 protected:
 	static GLUquadric* q;

@@ -19,31 +19,25 @@ Train* train1;
 TrainTracks* trainTracks1;
 TrackDefinition* trackDefinition1;
 RailwaySignal* railwaySignal1;
+TrainStation* trainStation1;
+Barrier* railwayBarrier1;
 
 // Train 2 + Tracks 2
 Train* train2;
 TrainTracks* trainTracks2;
 TrackDefinition* trackDefinition2;
-Barrier* railwayBarrier;
-
-TrainStation* trainStation;
+Barrier* railwayBarrier2;
+TrainStation* trainStation2;
 
 void Scene::display()
 {
-	static int toggleBarrierIterator = 0;
-	if (toggleBarrierIterator == 100)
-	{
-		railwayBarrier->toggleBarrier();
-		toggleBarrierIterator = -1;
-	}
-	toggleBarrierIterator++;
-
 	drawCamera();
 
 	stage->display();
 	skybox->display();
 	
-	//trainStation->display();
+	trainStation1->display();
+	trainStation2->display();
 
 	trainTracks1->display();
 	train1->display();
@@ -54,7 +48,8 @@ void Scene::display()
 	//tower->display();
 
 	railwaySignal1->display();
-	railwayBarrier->display();
+	railwayBarrier1->display();
+	railwayBarrier2->display();
 
 	glFlush();
 }
@@ -88,13 +83,36 @@ Scene::Scene()
 	trackDefinition2 = new InnerTrack();
 	train2 = new Train(6, trackDefinition2, GL_LIGHT2, true);
 	trainTracks2 = new TrainTracks(trackDefinition2);
-	railwayBarrier = new Barrier(0, 30, -135);
-	railwayBarrier->toggleBarrier();
 
-	trainStation = new TrainStation();
+	railwayBarrier1 = new Barrier(180, 45, 130);
+	train1->addNotificationAngle(railwayBarrier1, 90, 0);
+	train1->addNotificationAngle(railwayBarrier1, 20, 0);
+	train2->addNotificationAngle(railwayBarrier1, 50, 0);
+	train2->addNotificationAngle(railwayBarrier1, 120, 0);
+
+	railwayBarrier2 = new Barrier(0, 95, 75);
+	train1->addNotificationAngle(railwayBarrier2, 90, 0);
+	train1->addNotificationAngle(railwayBarrier2, 20, 0);
+	train2->addNotificationAngle(railwayBarrier2, 50, 0);
+	train2->addNotificationAngle(railwayBarrier2, 120, 0);
+
+	trainStation1 = new TrainStation(90, -32, 92);
+	trainStation2 = new TrainStation(-90, 32, 130);
 
 	cameraIndex = 3;
 	changeCamera();
+}
+
+void Scene::key(unsigned char key, int x, int y)
+{
+	switch (key)
+	{
+	case '1': cameraObject->setAngle(1); break;
+	case '2': cameraObject->setAngle(2); break;
+	case '3': cameraObject->setAngle(3); break;
+	case '4': cameraObject->setAngle(4); break;
+	case '5': cameraObject->setAngle(5); break;
+	}
 }
 
 void Scene::special(int key, int x, int y)
@@ -107,8 +125,7 @@ void Scene::special(int key, int x, int y)
 	case GLUT_KEY_LEFT:
 	case GLUT_KEY_RIGHT:
 		{
-			cameraIndex = 0;
-			stage->changeCameraViewAngle(key == GLUT_KEY_LEFT ? -1 : 1);
+			cameraObject->changeCameraViewAngle(key == GLUT_KEY_LEFT ? -1 : 1);
 			break;
 		}
 	}
@@ -117,17 +134,13 @@ void Scene::special(int key, int x, int y)
 
 void Scene::changeCamera()
 {
-	if (cameraIndex >= 7) cameraIndex = 0;
-	if (cameraIndex < 0) cameraIndex = 6;
+	if (cameraIndex >= 3) cameraIndex = 0;
+	if (cameraIndex < 0) cameraIndex = 2;
 	switch (cameraIndex)
 	{
-	case 0: cameraObject = stage; stage->setAngle(-1); break;
-	case 1: cameraObject = stage; stage->setAngle(0); break;
-	case 2: cameraObject = stage; stage->setAngle(1); break;
-	case 3: cameraObject = stage; stage->setAngle(2); break;
-	case 4: cameraObject = stage; stage->setAngle(3); break;
-	case 5: cameraObject = train1; break;
-	case 6: cameraObject = train2; break;
+	case 0: cameraObject = stage; break;
+	case 1: cameraObject = train1; break;
+	case 2: cameraObject = train2; break;
 	}
 }
 
@@ -140,13 +153,14 @@ Scene::~Scene()
 {
 	delete stage;
 	delete skybox;
-	delete trainStation;
 	delete tower;
 	delete train1;
 	delete trainTracks1;
 	delete trackDefinition1;
+	delete trainStation1;
 	delete train2;
 	delete trainTracks2;
 	delete trackDefinition2;
 	delete railwaySignal1;
+	delete trainStation2;
 }

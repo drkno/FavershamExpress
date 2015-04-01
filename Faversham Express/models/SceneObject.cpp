@@ -48,3 +48,13 @@ void SceneObject::drawCamera()
 {
 	throw "Cannot attach camera to this object.";
 }
+
+void SceneObject::setAngle(int)
+{
+	throw "Cannot set angle on this object.";
+}
+
+void SceneObject::changeCameraViewAngle(int)
+{
+	throw "Cannot set camera view on this object.";
+}

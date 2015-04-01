@@ -89,6 +89,7 @@
     <ClInclude Include="models\TrainStation.h" />
     <ClInclude Include="models\track\TrackDefinition.h" />
     <ClInclude Include="textures\loadTGA.h" />
+    <ClInclude Include="models\TrackCallback.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="models\Humanoid.cpp" />

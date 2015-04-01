@@ -3,8 +3,11 @@
 static const float station_points[] = { 0, 0, 32, 0, 32, 4, 32, 28, 16, 36, 0, 28, 21, 28, 21, 4, 0, 4 };
 const float* TrainStation::points = station_points;
 
-TrainStation::TrainStation()
+TrainStation::TrainStation(float rotationAngle, float x, float z)
 {
+	this->rotationAngle = rotationAngle;
+	this->x = x;
+	this->z = z;
 	txId = loadTexture("./textures/station.bmp");
 	humanoid = new Humanoid();
 }
@@ -96,8 +99,10 @@ void TrainStation::walkHuman()
 }
 
 void TrainStation::draw()
-{	
-	glTranslatef(130, 0, -32);
+{
+	glTranslatef(x, 0, z);
+	glRotatef(rotationAngle, 0, 1, 0);
+
 	walkHuman();
 	glColor3f(0.36, 0.35, 0.33);
 	end(0, -1);

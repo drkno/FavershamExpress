@@ -15,6 +15,7 @@ void OpenGLManager::run(int argc, char* argv[])
 	glutReshapeFunc(windowReshapeCallback);
 	glutSpecialFunc(specialKeypressCallback);
 	glutMouseFunc(mouseClickCallback);
+	glutKeyboardFunc(keypressCallback);
 	glutMainLoop();
 	windowScene->~Scene();
 }
@@ -46,6 +47,11 @@ void OpenGLManager::specialKeypressCallback(int key, int x, int y)
 	{
 		glutFullScreenToggle();
 	}
+}
+
+void OpenGLManager::keypressCallback(unsigned char key, int x, int y)
+{
+	windowScene->key(key, x, y);
 }
 
 void OpenGLManager::mouseClickCallback(int button, int state, int x, int y)

@@ -6,9 +6,12 @@
 class TrainStation : public SceneObject
 {
 public:
-	TrainStation();
+	TrainStation(float, float, float);
 
 private:
+	float rotationAngle;
+	float x;
+	float z;
 	const float depth = 64;
 	GLuint txId;
 	Humanoid* humanoid;

@@ -68,6 +68,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Makefile" />
     <None Include="packages.config" />
     <None Include="textures\Moon.raw" />
   </ItemGroup>

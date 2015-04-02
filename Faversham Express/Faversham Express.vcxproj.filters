@@ -29,6 +29,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="textures\Moon.raw" />
+    <None Include="Makefile" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\OpenGLManager.h">

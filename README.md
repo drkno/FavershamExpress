@@ -10,3 +10,7 @@ On Linux, cd into the "Faversham Express" folder that contains the Makefile and 
 Running:
 ----
 Ensure that the textures directory is located in the current working directory (usually same as executable) and run the program as normal.
+
+License:
+----
+Licensed under the MIT license and other applicable licenses where stated.

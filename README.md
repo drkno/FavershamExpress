@@ -1,5 +1,9 @@
 # FavershamExpress
-COSC363 Faversham Express OpenGL Assignment
+COSC363 Faversham Express OpenGL Assignment (Assignment 1)
+
+Marks:
+----
+This submission for the assignment received full marks (A+).
 
 Compiling:
 ----

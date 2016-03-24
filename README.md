@@ -1,6 +1,8 @@
 # FavershamExpress
 COSC363 Faversham Express OpenGL Assignment (Assignment 1)
 
+![Train image.](./Express.png)
+
 Marks:
 ----
 This submission for the assignment received full marks (A+).
